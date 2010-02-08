@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1265581086 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjunto.cpp
+
+1265581086 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjuntos.cpp
+
+1265581995 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\config.cpp
+
+1265581086 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.cpp
+
+1265592176 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\main.cpp
+	<iostream>
+	<stdio.h>
+	"config.h"
+
+1265592229 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\config.h
+
