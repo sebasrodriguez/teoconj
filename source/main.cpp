@@ -1,9 +1,9 @@
 #include <iostream>
+#include <stdio.h>
 
-using namespace std;
+#include "config.h"
 
-int main()
-{
-    cout << "Hello world!" << endl;
+int main(){
+
     return 0;
 }
