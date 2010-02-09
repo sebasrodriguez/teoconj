@@ -1,6 +1,5 @@
 #ifndef COMANDO_H_INCLUDED
 #define COMANDO_H_INCLUDED
-#include <stdio.h>
 
 typedef enum{
     ADD,
