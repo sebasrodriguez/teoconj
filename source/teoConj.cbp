@@ -32,6 +32,26 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Comando.cpp" />
+		<Unit filename="Comando.h" />
+		<Unit filename="Conjunto.cpp" />
+		<Unit filename="Conjunto.h" />
+		<Unit filename="Conjuntos.cpp" />
+		<Unit filename="Conjuntos.h" />
+		<Unit filename="config.cpp" />
+		<Unit filename="config.h" />
+		<Unit filename="lib\arbol.cpp" />
+		<Unit filename="lib\arbol.h" />
+		<Unit filename="lib\date.cpp" />
+		<Unit filename="lib\date.h" />
+		<Unit filename="lib\file.cpp" />
+		<Unit filename="lib\file.h" />
+		<Unit filename="lib\lista.cpp" />
+		<Unit filename="lib\lista.h" />
+		<Unit filename="lib\string.cpp" />
+		<Unit filename="lib\string.h" />
+		<Unit filename="lib\utils.cpp" />
+		<Unit filename="lib\utils.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
