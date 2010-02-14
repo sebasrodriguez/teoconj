@@ -106,3 +106,16 @@ bool streq(string s, string t){
         i++;
     return (aux1[i] == aux2[i]);
 }
+
+void straddchar(string &s, char c){
+    string t = new char[strlar(s) + 2];
+    int i = 0;
+    while (s[i] != EOS){
+        t[i] = s[i];
+        i++;
+    }
+    t[i] = c;
+    i ++;
+    t[i] = EOS;
+    strcop(s, t);
+}

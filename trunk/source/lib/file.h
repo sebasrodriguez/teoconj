@@ -1,12 +1,7 @@
 #ifndef FILE_H_INCLUDED
 #define FILE_H_INCLUDED
 
-#include <stdio.h>
-#include "../Folios.h"
-#include "string.h"
-#include "../Revisiones.h"
-
-//Para ejercicio 1!!!
+/*
 
 void AgregarFolios(string nomArch, Folios folios);
 
@@ -63,6 +58,6 @@ void Levantar_Enum(Evaluacion &e, FILE * f);
 
 void Levantar_Int (int &entero, FILE * f);
 
-
+*/
 
 #endif // FILE_H_INCLUDED

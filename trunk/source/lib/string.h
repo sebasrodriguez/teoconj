@@ -43,5 +43,7 @@ bool strmen(string s, string t);
 //Compara si son iguales
 bool streq(string s, string t);
 
+void straddchar(string &s, char c);
+
 
 #endif // STRING_H_INCLUDED
