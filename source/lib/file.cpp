@@ -1,5 +1,5 @@
 #include "file.h"
-
+/*
 void AgregarFolios(string nomArch, Folios folios)
 {
     FILE * file = fopen(nomArch, "wb");
@@ -229,3 +229,4 @@ void Levantar_Int (int &entero, FILE * f)
 {
     fread(&entero, sizeof(int), 1, f);
 }
+*/
