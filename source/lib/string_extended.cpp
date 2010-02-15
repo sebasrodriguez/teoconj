@@ -5,7 +5,7 @@ void strsplit(string str, char c, ListaString &l){
     string buffer;
     int i = 0;
     while(str[i] != EOS){
-        if(str[i] == c){
+        if(str[i] == c && str[i]){
             if(scanning){
                 ListaStringInsBack(l, buffer);
                 scanning = false;
@@ -20,4 +20,6 @@ void strsplit(string str, char c, ListaString &l){
         }
         i ++;
     }
+    if(scanning)
+        ListaStringInsBack(l, buffer);
 }
