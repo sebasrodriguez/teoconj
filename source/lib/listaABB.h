@@ -2,9 +2,10 @@
 #define LISTAABB_H_INCLUDED
 
 #include <stdio.h>
+#include "arbolint.h"
 
 typedef struct NListaABB{
-        int info;
+        ArbolInt info;
         NListaABB * sig;
 }NodoListaABB;
 
@@ -14,17 +15,19 @@ void ListaABBCreate(ListaABB &lista);
 
 bool ListaABBEmpty(ListaABB lista);
 
-void ListaABBInsFront(ListaABB &lista, int valor);
+void ListaABBInsFront(ListaABB &lista, ArbolInt valor);
 
 int ListaABBCount(ListaABB lista);
 
-int ListaABBFirst(ListaABB lista);
+void ListaABBFirst(ListaABB lista, ArbolInt &valor);
 
 void ListaABBResto(ListaABB &lista);
 
 void ListaABBShow(ListaABB lista);
 
 void ListaABBDelete(ListaABB &lista);
+
+void ListaABBInsBack(ListaABB &lista, ArbolInt valor);
 
 //Iterativas
 /*
