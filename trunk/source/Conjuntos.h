@@ -3,6 +3,9 @@
 
 #include "lib/listaABB"
 
-
+typedef struct{
+    ListaABB conjutos;
+    int tope
+}Conjuntos;
 
 #endif
