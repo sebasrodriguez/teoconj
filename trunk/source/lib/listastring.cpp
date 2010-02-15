@@ -1,6 +1,6 @@
 #include "listastring.h"
 
-void ListaStringCreate(ListaABB &lista){
+void ListaStringCreate(ListaString &lista){
     lista = NULL;
 }
 
@@ -43,5 +43,15 @@ void ListaStringShow(ListaString lista){
         print(lista->info);
         lista = lista->sig;
         i++;
+    }
+}
+
+void ListaStringInsBack(ListaString &lista, string valor){
+    if (lista == NULL){
+        ListaStringInsFront(lista, valor);
+    }else if (lista->sig == NULL){
+        ListaStringInsFront(lista->sig, valor);
+    }else{
+        ListaStringInsBack(lista->sig, valor);
     }
 }

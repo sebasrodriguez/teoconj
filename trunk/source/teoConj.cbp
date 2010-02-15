@@ -40,19 +40,25 @@
 		<Unit filename="Conjuntos.h" />
 		<Unit filename="config.cpp" />
 		<Unit filename="config.h" />
-		<Unit filename="lib\arbol.cpp" />
-		<Unit filename="lib\arbol.h" />
-		<Unit filename="lib\date.cpp" />
-		<Unit filename="lib\date.h" />
+		<Unit filename="lib\arbolint.cpp" />
+		<Unit filename="lib\arbolint.h" />
 		<Unit filename="lib\file.cpp" />
 		<Unit filename="lib\file.h" />
-		<Unit filename="lib\lista.cpp" />
-		<Unit filename="lib\lista.h" />
+		<Unit filename="lib\listaABB.cpp" />
+		<Unit filename="lib\listaABB.h" />
+		<Unit filename="lib\listastring.cpp" />
+		<Unit filename="lib\listastring.h" />
 		<Unit filename="lib\string.cpp" />
 		<Unit filename="lib\string.h" />
 		<Unit filename="lib\utils.cpp" />
 		<Unit filename="lib\utils.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="main.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="test\test_comando.cpp" />
+		<Unit filename="test\test_conjunto.cpp" />
+		<Unit filename="test\test_conjuntos.cpp" />
+		<Unit filename="test\test_string.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

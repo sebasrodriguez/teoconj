@@ -27,4 +27,6 @@ bool ArbolIntPertenece (ArbolInt a, int valor);
 
 void ArbolIntDelete (ArbolInt a);
 
+void ArbolIntCopy(ArbolInt &a, ArbolInt b);
+
 #endif // ARBOLINT_H_INCLUDED

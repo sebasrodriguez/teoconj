@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "string.h"
+
 typedef struct NListaString{
         string info;
         NListaString * sig;
@@ -25,5 +26,7 @@ void ListaStringResto(ListaString &lista);
 void ListaStringShow(ListaString lista);
 
 void ListaStringDelete(ListaString &lista);
+
+void ListaStringInsBack(ListaString &lista, string valor);
 
 #endif

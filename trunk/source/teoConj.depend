@@ -39,7 +39,7 @@
 1256863534 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\lista.h
 	<stdio.h>
 
-1266177050 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\string.cpp
+1266177740 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\string.cpp
 	"string.h"
 
 1266177407 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\string.h
@@ -52,16 +52,17 @@
 	<stdio.h>
 	"string.h"
 
-1266173188 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\arbolint.cpp
+1266245704 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\arbolint.cpp
 	"arbolint.h"
 
-1266173053 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\listaabb.cpp
+1266245861 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\listaabb.cpp
 	"listaABB.h"
 
-1266173143 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\listaabb.h
+1266245075 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\listaabb.h
 	<stdio.h>
+	"arbolint.h"
 
-1266173177 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\arbolint.h
+1266245575 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\arbolint.h
 	<stdio.h>
 
 1266173962 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\test\test_comando.cpp
@@ -70,8 +71,23 @@
 
 1266173962 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\test\test_conjuntos.cpp
 
-1266177365 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\test\test_string.cpp
+1266244198 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\test\test_string.cpp
 	<iostream>
 	<stdio.h>
-	"../lib/string.h"
+	"../lib/string_extended.h"
+
+1266244405 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\listastring.cpp
+	"listastring.h"
+
+1266244472 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\listastring.h
+	<stdio.h>
+	"string.h"
+
+1266244638 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\string_extended.cpp
+	"string_extended.h"
+
+1266244004 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\string_extended.h
+	<stdio.h>
+	"string.h"
+	"listastring.h"
 

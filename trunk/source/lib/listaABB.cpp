@@ -8,15 +8,15 @@ bool ListaABBEmpty(ListaABB lista){
     return (lista == NULL);
 }
 
-void ListaABBInsFront(ListaABB &lista, int valor){
+void ListaABBInsFront(ListaABB &lista, ArbolInt valor){
     ListaABB aux = new NodoListaABB;
     aux->info = valor;
     aux->sig = lista;
     lista = aux;
 }
 
-int ListaABBFirst(ListaABB lista){
-    return (lista->info);
+void ListaABBFirst(ListaABB lista, ArbolInt &valor){
+    ArbolIntCopy(valor, lista->info);
 }
 
 void ListaABBResto(ListaABB &lista){
@@ -40,11 +40,22 @@ int ListaABBCount(ListaABB lista){
 void ListaABBShow(ListaABB lista){
     int i = 0;
     while (lista != NULL)    {
-        printf("[%d] = %d\n", i, lista->info);
+        ArbolIntOrden (lista->info);
         lista = lista->sig;
         i++;
     }
 }
+
+void ListaABBInsBack(ListaABB &lista, ArbolInt valor){
+    if (lista == NULL){
+        ListaABBInsBack(lista, valor);
+    }else if (lista->sig == NULL){
+        ListaABBInsBack(lista->sig, valor);
+    }else{
+        ListaABBInsBack(lista->sig, valor);
+    }
+}
+
 /*
 int SumaPares(Lista lista){
     int i = 0;

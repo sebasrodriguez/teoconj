@@ -71,3 +71,11 @@ void ArbolIntDelete (ArbolInt a){
     a = NULL;
 }
 
+void ArbolIntCopy(ArbolInt &a, ArbolInt b){
+    if(b != NULL){
+        ArbolIntCopy(a->hizq, b->hizq);
+        a->info = b->info;
+        ArbolIntCopy(a->hizq, b->hder);
+    }
+}
+
