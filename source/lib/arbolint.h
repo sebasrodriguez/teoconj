@@ -29,4 +29,6 @@ void ArbolIntDelete (ArbolInt a);
 
 void ArbolIntCopy(ArbolInt &a, ArbolInt b);
 
+void ArbolIntAdd(ArbolInt &a, int valor);
+
 #endif // ARBOLINT_H_INCLUDED

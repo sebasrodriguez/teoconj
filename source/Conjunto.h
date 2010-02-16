@@ -1,12 +1,13 @@
 #ifndef CONJUNTO_H_INCLUDED
 #define CONJUNTO_H_INCLUDED
 
-typedef struct nodoC{
-        int info;
-        nodoC * hizq;
-        nodoC * hder;
-} NodoConjunto;
+#include <stdio.h>
+#include "lib/arbolint.h"
 
-typedef NodoConjunto * Conjunto;
+typedef ArbolInt Conjunto;
+
+void ConjuntoCreate(Conjunto &c);
+
+void ConjuntoAddValue(Conjunto &c, int valor);
 
 #endif
