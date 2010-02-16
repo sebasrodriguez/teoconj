@@ -158,20 +158,28 @@ int parseParamValor(string s){
 }
 
 void executeComandoHelp(){
+    printf("No Implementado");
 }
 void executeComandoListAll(){
+    printf("No Implementado");
 }
 void executeComandoExit(){
+    printf("Hasta la próxima");
 }
 void executeComandoUnion(){
+    printf("No Implementado");
 }
 void executeComandoIntersection(){
+    printf("No Implementado");
 }
 void executeComandoDifference(){
+    printf("No Implementado");
 }
 void executeComandoIncluded(){
+    printf("No Implementado");
 }
 void executeComandoEquals(){
+    printf("No Implementado");
 }
 void executeComandoAdd(ListaString params, Conjuntos &conjuntos){
     int id = parseParamConjunto(params->info);
@@ -183,25 +191,34 @@ void executeComandoAdd(ListaString params, Conjuntos &conjuntos){
             ConjuntoAddValue(conjunto, parseParamValor(params->info));
             params = params->sig;
         }
-        ArbolIntOrden(conjunto); //TODO probar si funca el add
+        printf("c%d = ", id);
+        ConjuntoShow(conjunto);
+    }else{
+        //error
     }
 }
 void executeComandoRemove(){
+    printf("No Implementado");
 }
 void executeComandoMember(){
+    printf("No Implementado");
 }
 void executeComandoCreate(ListaString params, Conjuntos &conjuntos){
     Conjunto conjunto;
     ConjuntoCreate(conjunto);
+    int id = conjuntos.tope;
     while(params != NULL){
         ConjuntoAddValue(conjunto, parseParamValor(params->info));
         params = params->sig;
     }
     ConjuntosAdd(conjuntos, conjunto);
+    printf("c%d = ", id); ConjuntoShow(conjunto);
 }
 void executeComandoShow(){
+    printf("No Implementado");
 }
 void executeComandoLoad(){
+    printf("No Implementado");
 }
 
 void executeComando(Comando cmd, ListaString params, Conjuntos &conjuntos){
@@ -216,7 +233,7 @@ void executeComando(Comando cmd, ListaString params, Conjuntos &conjuntos){
         case INCLUDED:
         case EQUALS:
             break;
-        case ADD:
+        case ADD: executeComandoAdd(params, conjuntos); break;
         case REMOVE:
         case MEMBER:
             break;

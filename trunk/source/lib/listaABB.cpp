@@ -48,7 +48,7 @@ void ListaABBShow(ListaABB lista){
 
 void ListaABBInsBack(ListaABB &lista, ArbolInt valor){
     if (lista == NULL){
-        ListaABBInsBack(lista, valor);
+        ListaABBInsFront(lista, valor);
     }else if (lista->sig == NULL){
         ListaABBInsBack(lista->sig, valor);
     }else{

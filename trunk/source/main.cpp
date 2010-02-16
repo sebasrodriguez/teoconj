@@ -25,21 +25,27 @@ Comando exit (patron: "cmd")*/
 int main(){
     Conjuntos conjuntos;
     ConjuntosCreate(conjuntos);
-    string strcomando; strcrear(strcomando);
-    printf("%s:", CONSOLE_PROMPT);
-    ListaString comando;
-    ListaStringCreate(comando);
-    scan(strcomando);
-    strsplit(strcomando, BSP, comando);
-    if(validateComando(comando->info)){
-        Comando cmd = getComandoFromString(comando->info);
-        ListaString params; ListaStringCreate(params);
-        params = comando->sig;
-        if(validateParams(cmd, params))
-            executeComando(cmd, params, conjuntos);
-        else
-            printf("valid command, params not valid");
-    }else
-        printf("command not valid");
+    bool salir = false;
+    do{
+        fflush(stdin);
+        string strcomando; strcrear(strcomando);
+        printf("%s: ", CONSOLE_PROMPT);
+        ListaString comando;
+        ListaStringCreate(comando);
+        scan(strcomando);
+        strsplit(strcomando, BSP, comando);
+        if(validateComando(comando->info)){
+            Comando cmd = getComandoFromString(comando->info);
+            ListaString params; ListaStringCreate(params);
+            params = comando->sig;
+            if(validateParams(cmd, params)){
+                printf("%s: ", CONSOLE_RESULT_PROMPT);
+                executeComando(cmd, params, conjuntos);printf("\n");
+                salir = (cmd == EXIT);
+           }else
+                printf("valid command, params not valid");
+        }else
+            printf("command not valid");
+    }while(!salir);
     return 0;
 }

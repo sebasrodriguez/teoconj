@@ -2,7 +2,7 @@
 
 void ConjuntosCreate(Conjuntos &c){
     ListaABBCreate(c.conjuntos);
-    c.tope = 0;
+    c.tope = 1;
 }
 
 void ConjuntosAdd(Conjuntos &c, ArbolInt conjunto){
@@ -11,7 +11,7 @@ void ConjuntosAdd(Conjuntos &c, ArbolInt conjunto){
 }
 
 bool ConjuntosHasId(Conjuntos c, int id){
-    return id < c.tope + 1;
+    return id < c.tope;
 }
 
 void ConjuntosGetById(Conjuntos &c, int id, ArbolInt &conjunto){

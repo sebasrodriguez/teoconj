@@ -45,5 +45,6 @@ bool streq(string s, string t);
 
 void straddchar(string &s, char c);
 
+void strclear(string &s);
 
 #endif // STRING_H_INCLUDED
