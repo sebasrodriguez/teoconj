@@ -1,14 +1,16 @@
 # depslib dependency file v1.0
-1265581086 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjunto.cpp
+1266292452 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjunto.cpp
+	"Conjunto.h"
 
-1265581086 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjuntos.cpp
+1266290957 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjuntos.cpp
+	"Conjuntos.h"
 
 1265592196 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\config.cpp
 
-1266271438 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.cpp
+1266292547 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.cpp
 	"Comando.h"
 
-1266280504 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\main.cpp
+1266283626 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\main.cpp
 	<iostream>
 	<stdio.h>
 	"lib/string_extended.h"
@@ -54,7 +56,7 @@
 	<stdio.h>
 	"string.h"
 
-1266245704 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\arbolint.cpp
+1266292492 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\arbolint.cpp
 	"arbolint.h"
 
 1266245861 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\listaabb.cpp
@@ -64,7 +66,7 @@
 	<stdio.h>
 	"arbolint.h"
 
-1266245575 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\arbolint.h
+1266292482 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\arbolint.h
 	<stdio.h>
 
 1266173962 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\test\test_comando.cpp
@@ -93,8 +95,18 @@
 	"string.h"
 	"listastring.h"
 
-1266270297 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.h
+1266283282 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.h
+	<iostream.h>
 	<stdio.h>
 	"lib/string.h"
 	"lib/listastring.h"
+	"Conjunto.h"
+	"Conjuntos.h"
+
+1266283307 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjunto.h
+	<stdio.h>
+	"lib/arbolint.h"
+
+1266295017 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjuntos.h
+	"lib/listaABB.h"
 

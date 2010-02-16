@@ -79,3 +79,12 @@ void ArbolIntCopy(ArbolInt &a, ArbolInt b){
     }
 }
 
+void ArbolIntAdd(ArbolInt &a, int valor){
+    if (a == NULL)
+        a = ArbolIntCons(valor, NULL, NULL);
+    else if (a->info > valor)
+        ArbolIntAdd(a->hizq, valor);
+    else if (a->info < valor)
+        ArbolIntAdd(a->hder, valor);
+}
+

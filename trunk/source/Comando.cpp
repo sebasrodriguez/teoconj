@@ -76,3 +76,156 @@ void getComandoString(Comando cmd, string &s){
         default: strcop(s, "");
     }
 }
+
+bool validateParamConjunto(string s){
+    bool valid = false;
+    if(s[0] == 'c'){
+        s ++;
+        if(atoi(s) != 0) valid = true;
+    }
+    return valid;
+}
+bool validateParamValor(string s){
+    return streq(s, "0") || atoi(s) != 0;
+}
+bool validateParamName(string s){
+    return true;
+}
+
+bool validateParams(Comando cmd, ListaString params){
+    bool valid = true;
+    switch(cmd){
+        case HELP:
+        case LISTALL:
+        case EXIT:
+            valid = ListaStringEmpty(params);
+            break;
+        case UNION:
+        case INTERSECTION:
+        case DIFFERENCE:
+        case INCLUDED:
+        case EQUALS:
+            valid = ListaStringCount(params) >=2;
+            while(valid && params != NULL){
+                valid = validateParamConjunto(params->info);
+                params = params->sig;
+            }
+            break;
+        case ADD:
+        case REMOVE:
+        case MEMBER:
+            if(ListaStringCount(params) < 2) valid = false;
+            else{
+                valid = validateParamConjunto(params->info);
+                params = params->sig;
+                while(valid && params != NULL){
+                    valid = validateParamValor(params->info);
+                    params = params->sig;
+                }
+            }
+            break;
+        case CREATE:
+            while(valid && params != NULL){
+                valid = validateParamValor(params->info);
+                params = params->sig;
+            }
+            break;
+        case SHOW:
+            valid = ListaStringCount(params) == 1;
+            while(valid && params != NULL){
+                valid = validateParamConjunto(params->info);
+                params = params->sig;
+            }
+            break;
+        case SAVE:
+            if(ListaStringCount(params) != 2) valid = false;
+            else valid = validateParamConjunto(params->info) && validateParamName(params->sig->info);
+            break;
+        case LOAD:
+            if(ListaStringCount(params) != 1) valid = false;
+            else valid = validateParamName(params->info);
+            break;
+    }
+    return valid;
+}
+
+int parseParamConjunto(string s){
+    s++;
+    return atoi(s);
+}
+int parseParamValor(string s){
+    return atoi(s);
+}
+
+void executeComandoHelp(){
+}
+void executeComandoListAll(){
+}
+void executeComandoExit(){
+}
+void executeComandoUnion(){
+}
+void executeComandoIntersection(){
+}
+void executeComandoDifference(){
+}
+void executeComandoIncluded(){
+}
+void executeComandoEquals(){
+}
+void executeComandoAdd(ListaString params, Conjuntos &conjuntos){
+    int id = parseParamConjunto(params->info);
+    params = params->sig;
+    if(ConjuntosHasId(conjuntos, id)){
+        Conjunto conjunto;
+        ConjuntosGetById(conjuntos, id, conjunto);
+        while(params != NULL){
+            ConjuntoAddValue(conjunto, parseParamValor(params->info));
+            params = params->sig;
+        }
+        ArbolIntOrden(conjunto); //TODO probar si funca el add
+    }
+}
+void executeComandoRemove(){
+}
+void executeComandoMember(){
+}
+void executeComandoCreate(ListaString params, Conjuntos &conjuntos){
+    Conjunto conjunto;
+    ConjuntoCreate(conjunto);
+    while(params != NULL){
+        ConjuntoAddValue(conjunto, parseParamValor(params->info));
+        params = params->sig;
+    }
+    ConjuntosAdd(conjuntos, conjunto);
+}
+void executeComandoShow(){
+}
+void executeComandoLoad(){
+}
+
+void executeComando(Comando cmd, ListaString params, Conjuntos &conjuntos){
+    switch(cmd){
+        case HELP: executeComandoHelp();break;
+        case LISTALL:
+        case EXIT:
+            break;
+        case UNION:
+        case INTERSECTION:
+        case DIFFERENCE:
+        case INCLUDED:
+        case EQUALS:
+            break;
+        case ADD:
+        case REMOVE:
+        case MEMBER:
+            break;
+        case CREATE: executeComandoCreate(params, conjuntos); break;
+        case SHOW:
+            break;
+        case SAVE:
+            break;
+        case LOAD:
+            break;
+    }
+}
