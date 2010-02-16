@@ -119,3 +119,7 @@ void straddchar(string &s, char c){
     t[i] = EOS;
     strcop(s, t);
 }
+
+void strclear(string &s){
+    strcop(s, "");
+}

@@ -50,15 +50,17 @@
 		<Unit filename="lib\listastring.h" />
 		<Unit filename="lib\string.cpp" />
 		<Unit filename="lib\string.h" />
+		<Unit filename="lib\string_extended.cpp" />
+		<Unit filename="lib\string_extended.h" />
 		<Unit filename="lib\utils.cpp" />
 		<Unit filename="lib\utils.h" />
-		<Unit filename="main.cpp">
-			<Option target="Release" />
-		</Unit>
+		<Unit filename="main.cpp" />
 		<Unit filename="test\test_comando.cpp" />
 		<Unit filename="test\test_conjunto.cpp" />
 		<Unit filename="test\test_conjuntos.cpp" />
-		<Unit filename="test\test_string.cpp" />
+		<Unit filename="test\test_string.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
