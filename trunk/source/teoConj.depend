@@ -5,10 +5,10 @@
 
 1265592196 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\config.cpp
 
-1266253130 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.cpp
+1266271438 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.cpp
 	"Comando.h"
 
-1266253733 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\main.cpp
+1266280504 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\main.cpp
 	<iostream>
 	<stdio.h>
 	"lib/string_extended.h"
@@ -93,7 +93,7 @@
 	"string.h"
 	"listastring.h"
 
-1266253138 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.h
+1266270297 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.h
 	<stdio.h>
 	"lib/string.h"
 	"lib/listastring.h"
