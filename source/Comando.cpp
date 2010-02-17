@@ -183,12 +183,15 @@ void executeComandoEquals(){
 }
 void executeComandoAdd(ListaString params, Conjuntos &conjuntos){
     int id = parseParamConjunto(params->info);
+    int valor;
     params = params->sig;
     if(ConjuntosHasId(conjuntos, id)){
         Conjunto conjunto;
         ConjuntosGetById(conjuntos, id, conjunto);
         while(params != NULL){
-            ConjuntoAddValue(conjunto, parseParamValor(params->info));
+            valor = parseParamValor(params->info);
+            if(!ConjuntoPertenece(conjunto, valor))
+                ConjuntoAddValue(conjunto, valor);
             params = params->sig;
         }
         printf("c%d = ", id);
@@ -207,8 +210,11 @@ void executeComandoCreate(ListaString params, Conjuntos &conjuntos){
     Conjunto conjunto;
     ConjuntoCreate(conjunto);
     int id = conjuntos.tope;
+    int valor;
     while(params != NULL){
-        ConjuntoAddValue(conjunto, parseParamValor(params->info));
+        valor = parseParamValor(params->info);
+        if(!ConjuntoPertenece(conjunto, valor))
+            ConjuntoAddValue(conjunto, valor);
         params = params->sig;
     }
     ConjuntosAdd(conjuntos, conjunto);
