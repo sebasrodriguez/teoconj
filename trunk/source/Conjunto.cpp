@@ -24,3 +24,7 @@ void ConjuntoOrdenBuffer(Conjunto c, string &buffer, string &result){
         ConjuntoOrdenBuffer(c->hder, buffer, result);
     }
 }
+
+bool ConjuntoPertenece(Conjunto c, int valor){
+    return ArbolIntPertenece(c, valor);
+}

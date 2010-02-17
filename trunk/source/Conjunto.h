@@ -16,4 +16,6 @@ void ConjuntoShow(Conjunto c);
 
 void ConjuntoOrdenBuffer(Conjunto c, string &buffer, string &result);
 
+bool ConjuntoPertenece(Conjunto c, int valor);
+
 #endif

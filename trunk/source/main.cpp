@@ -23,14 +23,15 @@ Comando load (patron: "cmd name")
 Comando exit (patron: "cmd")*/
 
 int main(){
+    fflush(stdin);
     Conjuntos conjuntos;
     ConjuntosCreate(conjuntos);
     bool salir = false;
+    string strcomando;
+    strcrear(strcomando);
     do{
-        fflush(stdin);
-        string strcomando; strcrear(strcomando);
-        printf("%s: ", CONSOLE_PROMPT);
         ListaString comando;
+        printf("%s: ", CONSOLE_PROMPT);
         ListaStringCreate(comando);
         scan(strcomando);
         strsplit(strcomando, BSP, comando);
@@ -46,6 +47,8 @@ int main(){
                 printf("valid command, params not valid");
         }else
             printf("command not valid");
+        strdestruir(strcomando);
+        fflush(stdin);
     }while(!salir);
     return 0;
 }

@@ -1,16 +1,16 @@
 # depslib dependency file v1.0
-1266342428 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjunto.cpp
+1266356636 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjunto.cpp
 	"Conjunto.h"
 
-1266342873 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjuntos.cpp
+1266357912 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjuntos.cpp
 	"Conjuntos.h"
 
 1265592196 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\config.cpp
 
-1266345590 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.cpp
+1266376754 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\comando.cpp
 	"Comando.h"
 
-1266342567 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\main.cpp
+1266377292 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\main.cpp
 	<iostream>
 	<stdio.h>
 	"lib/string_extended.h"
@@ -87,7 +87,7 @@
 	<stdio.h>
 	"string.h"
 
-1266250858 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\string_extended.cpp
+1266377779 source:c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\string_extended.cpp
 	"string_extended.h"
 
 1266244004 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\lib\string_extended.h
@@ -103,7 +103,7 @@
 	"Conjunto.h"
 	"Conjuntos.h"
 
-1266341475 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjunto.h
+1266356649 c:\documents and settings\pablito\mis documentos\universitario\teoconj\source\conjunto.h
 	<iostream.h>
 	<stdio.h>
 	"lib/string.h"
