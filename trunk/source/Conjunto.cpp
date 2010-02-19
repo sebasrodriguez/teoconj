@@ -11,15 +11,17 @@ void ConjuntoAddValue(Conjunto &c, int valor){
 void ConjuntoShow(Conjunto c){
     string buffer; strcrear(buffer);
     string result; strcrear(result);
-    ConjuntoOrdenBuffer(c, buffer, result);
-    result += 2;
+    if(c != NULL){
+        ConjuntoOrdenBuffer(c, buffer, result);
+        result += 2;
+    }
     printf("{");print(result);printf("}");
 }
 
 void ConjuntoOrdenBuffer(Conjunto c, string &buffer, string &result){
     if (c != NULL){
         ConjuntoOrdenBuffer(c->hizq, buffer, result);
-        strcon(result, ", ");
+        straddchar(result, ','); straddchar(result, BSP);
         strcon(result, itoa(c->info, buffer, 10));
         ConjuntoOrdenBuffer(c->hder, buffer, result);
     }

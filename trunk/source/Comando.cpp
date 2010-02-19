@@ -188,6 +188,7 @@ void executeComandoAdd(ListaString params, Conjuntos &conjuntos){
     if(ConjuntosHasId(conjuntos, id)){
         Conjunto conjunto;
         ConjuntosGetById(conjuntos, id, conjunto);
+        //ConjuntoShow(conjunto);
         while(params != NULL){
             valor = parseParamValor(params->info);
             if(!ConjuntoPertenece(conjunto, valor))
@@ -209,7 +210,7 @@ void executeComandoMember(){
 void executeComandoCreate(ListaString params, Conjuntos &conjuntos){
     Conjunto conjunto;
     ConjuntoCreate(conjunto);
-    int id = conjuntos.tope;
+    int id = ConjuntosGetNextId(conjuntos) ;
     int valor;
     while(params != NULL){
         valor = parseParamValor(params->info);
@@ -239,7 +240,7 @@ void executeComando(Comando cmd, ListaString params, Conjuntos &conjuntos){
         case INCLUDED:
         case EQUALS:
             break;
-        case ADD: executeComandoAdd(params, conjuntos); break;
+        case ADD: if(params != NULL)executeComandoAdd(params, conjuntos); break;
         case REMOVE:
         case MEMBER:
             break;

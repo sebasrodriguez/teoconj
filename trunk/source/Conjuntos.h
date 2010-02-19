@@ -16,4 +16,6 @@ bool ConjuntosHasId(Conjuntos c, int id);
 
 void ConjuntosGetById(Conjuntos &c, int id, ArbolInt &conjunto);
 
+int ConjuntosGetNextId(Conjuntos c);
+
 #endif

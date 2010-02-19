@@ -27,11 +27,8 @@ void ListaStringResto(ListaString &lista){
 
 int ListaStringCount(ListaString lista){
     int largo = 0;
-    while (lista->sig != NULL)    {
+    while (lista != NULL)    {
         lista = lista->sig;
-        largo++;
-    }
-    if (largo > 0)    {
         largo++;
     }
     return largo;
