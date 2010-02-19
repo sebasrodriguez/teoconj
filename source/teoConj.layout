@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="Comando.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="5954" topLine="169" />
+	<File name="Comando.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="6681" topLine="202" />
 	</File>
-	<File name="Comando.h" open="1" top="0" tabpos="5">
+	<File name="Comando.h" open="1" top="0" tabpos="4">
 		<Cursor position="1379" topLine="0" />
 	</File>
-	<File name="Conjunto.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="137" topLine="0" />
+	<File name="Conjunto.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="687" topLine="0" />
 	</File>
-	<File name="Conjunto.h" open="1" top="0" tabpos="2">
-		<Cursor position="176" topLine="0" />
+	<File name="Conjunto.h" open="1" top="0" tabpos="1">
+		<Cursor position="427" topLine="0" />
 	</File>
-	<File name="Conjuntos.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="315" topLine="0" />
+	<File name="Conjuntos.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="170" topLine="0" />
 	</File>
-	<File name="Conjuntos.h" open="1" top="0" tabpos="7">
+	<File name="Conjuntos.h" open="1" top="0" tabpos="6">
 		<Cursor position="366" topLine="0" />
 	</File>
-	<File name="config.h" open="1" top="0" tabpos="3">
+	<File name="config.h" open="1" top="0" tabpos="2">
 		<Cursor position="84" topLine="0" />
 	</File>
-	<File name="lib\arbolint.cpp" open="1" top="0" tabpos="10">
-		<Cursor position="1966" topLine="31" />
+	<File name="lib\arbolint.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="437" topLine="36" />
 	</File>
-	<File name="lib\arbolint.h" open="1" top="0" tabpos="11">
+	<File name="lib\arbolint.h" open="1" top="0" tabpos="10">
 		<Cursor position="668" topLine="2" />
 	</File>
 	<File name="lib\file.cpp" open="0" top="0" tabpos="0">
@@ -34,26 +34,26 @@
 	<File name="lib\file.h" open="0" top="0" tabpos="0">
 		<Cursor position="1596" topLine="28" />
 	</File>
-	<File name="lib\listaABB.cpp" open="1" top="0" tabpos="9">
-		<Cursor position="531" topLine="9" />
+	<File name="lib\listaABB.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="1039" topLine="39" />
 	</File>
-	<File name="lib\listaABB.h" open="1" top="0" tabpos="8">
+	<File name="lib\listaABB.h" open="1" top="0" tabpos="7">
 		<Cursor position="617" topLine="6" />
 	</File>
 	<File name="lib\listastring.cpp" open="0" top="0" tabpos="16">
-		<Cursor position="573" topLine="0" />
+		<Cursor position="566" topLine="25" />
 	</File>
-	<File name="lib\listastring.h" open="1" top="0" tabpos="13">
+	<File name="lib\listastring.h" open="1" top="0" tabpos="12">
 		<Cursor position="422" topLine="0" />
 	</File>
 	<File name="lib\string.cpp" open="0" top="0" tabpos="14">
-		<Cursor position="2197" topLine="89" />
+		<Cursor position="2233" topLine="92" />
 	</File>
 	<File name="lib\string.h" open="0" top="0" tabpos="15">
-		<Cursor position="1003" topLine="0" />
+		<Cursor position="1043" topLine="17" />
 	</File>
 	<File name="lib\string_extended.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="632" topLine="0" />
+		<Cursor position="197" topLine="0" />
 	</File>
 	<File name="lib\string_extended.h" open="0" top="0" tabpos="0">
 		<Cursor position="142" topLine="0" />
@@ -61,8 +61,8 @@
 	<File name="lib\utils.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="283" topLine="0" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="12">
-		<Cursor position="547" topLine="7" />
+	<File name="main.cpp" open="1" top="1" tabpos="11">
+		<Cursor position="1458" topLine="20" />
 	</File>
 	<File name="test\test_string.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="290" topLine="0" />

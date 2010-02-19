@@ -27,26 +27,28 @@ int main(){
     Conjuntos conjuntos;
     ConjuntosCreate(conjuntos);
     bool salir = false;
+    ListaString comando;
     string strcomando;
-    strcrear(strcomando);
     do{
-        ListaString comando;
         printf("%s: ", CONSOLE_PROMPT);
         ListaStringCreate(comando);
+        strcrear(strcomando);
         scan(strcomando);
-        strsplit(strcomando, BSP, comando);
-        if(validateComando(comando->info)){
-            Comando cmd = getComandoFromString(comando->info);
-            ListaString params; ListaStringCreate(params);
-            params = comando->sig;
-            if(validateParams(cmd, params)){
-                printf("%s: ", CONSOLE_RESULT_PROMPT);
-                executeComando(cmd, params, conjuntos);printf("\n");
-                salir = (cmd == EXIT);
-           }else
-                printf("valid command, params not valid");
-        }else
-            printf("command not valid");
+        if(strcomando[0] != EOS){
+            strsplit(strcomando, BSP, comando);
+            if(validateComando(comando->info)){
+                Comando cmd = getComandoFromString(comando->info);
+                ListaString params; ListaStringCreate(params);
+                params = comando->sig;
+                if(validateParams(cmd, params)){
+                    printf("%s: ", CONSOLE_RESULT_PROMPT);
+                    executeComando(cmd, params, conjuntos);printf("\n");
+                    salir = (cmd == EXIT);
+               }else
+                    printf("valid command, params not valid");
+            }else
+                printf("command not valid");
+        }
         strdestruir(strcomando);
         fflush(stdin);
     }while(!salir);
