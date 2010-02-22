@@ -5,7 +5,7 @@ void ConjuntosCreate(Conjuntos &c){
     c.tope = 0;
 }
 
-void ConjuntosAdd(Conjuntos &c, ArbolInt conjunto){
+void ConjuntosAdd(Conjuntos &c, Conjunto conjunto){
     ListaABBInsBack(c.conjuntos, conjunto);
     c.tope ++;
 }
@@ -14,12 +14,12 @@ bool ConjuntosHasId(Conjuntos c, int id){
     return id <= c.tope;
 }
 
-void ConjuntosGetById(Conjuntos &c, int id, ArbolInt &conjunto){
+void ConjuntosGetById(Conjuntos &c, int id, Conjunto &conjunto){
     ListaABB aux;
     aux = c.conjuntos;
     bool found = false;
     int i = 1;
-    while(!found && aux != NULL){
+    while(!found){
         if(i == id){
             conjunto = aux->info;
             found = true;
@@ -31,4 +31,13 @@ void ConjuntosGetById(Conjuntos &c, int id, ArbolInt &conjunto){
 
 int ConjuntosGetNextId(Conjuntos c){
     return c.tope + 1;
+}
+
+void ConjuntosShow(Conjuntos c){
+    int i = 1;
+    while (c.conjuntos != NULL) {
+        printf("c%d = ", i); ConjuntoShow(c.conjuntos->info); printf("\n");
+        c.conjuntos = c.conjuntos->sig;
+        i++;
+    }
 }

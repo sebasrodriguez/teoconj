@@ -88,3 +88,43 @@ void ArbolIntAdd(ArbolInt &a, int valor){
         ArbolIntAdd(a->hder, valor);
 }
 
+int ArbolIntMin(ArbolInt a) {
+    while (a->hizq == NULL)
+        a = a -> hizq;
+    return (a->info);
+}
+
+void ArbolIntRemoveMin (ArbolInt &a){
+    ArbolInt aux;
+    if (a->hizq == NULL){
+        aux = a->hder;
+        delete a;
+        a = aux;
+    }else
+        ArbolIntRemoveMin (a->hizq);
+}
+
+void ArbolIntRemove (ArbolInt &a , int valor){
+    ArbolInt aux;
+    if (valor == a->info){
+        if (a->hder == NULL){
+            aux = a->hizq;
+            delete a;
+            a = aux;
+        }else
+            if (a->hizq == NULL){
+                aux = a->hder;
+                delete a;
+                a = aux;
+            }else{
+                a->info = ArbolIntMin (a->hder);
+                ArbolIntRemoveMin (a->hder);
+            }
+    }else{
+        if (valor < a->info)
+            ArbolIntRemove (a->hizq, valor);
+        else
+            ArbolIntRemove (a->hder, valor);
+    }
+}
+

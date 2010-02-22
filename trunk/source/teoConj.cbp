@@ -56,7 +56,9 @@
 		<Unit filename="lib\utils.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="test\test_comando.cpp" />
-		<Unit filename="test\test_conjunto.cpp" />
+		<Unit filename="test\test_conjunto.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="test\test_conjuntos.cpp" />
 		<Unit filename="test\test_string.cpp">
 			<Option target="Release" />

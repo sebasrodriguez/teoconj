@@ -31,4 +31,10 @@ void ArbolIntCopy(ArbolInt &a, ArbolInt b);
 
 void ArbolIntAdd(ArbolInt &a, int valor);
 
+int ArbolIntMin(ArbolInt a) ;
+
+void ArbolIntRemoveMin (ArbolInt &a);
+
+void ArbolIntRemove (ArbolInt &a , int valor);
+
 #endif // ARBOLINT_H_INCLUDED
