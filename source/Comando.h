@@ -1,7 +1,7 @@
 #ifndef COMANDO_H_INCLUDED
 #define COMANDO_H_INCLUDED
 
-#include<iostream.h>
+#include<stdlib.h>
 #include<stdio.h>
 #include "lib/string.h"
 #include "lib/listastring.h"

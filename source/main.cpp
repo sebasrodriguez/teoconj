@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdlib.h>
 #include <stdio.h>
 
 #include "lib/string_extended.h"
@@ -23,7 +23,6 @@ Comando load (patron: "cmd name")
 Comando exit (patron: "cmd")*/
 
 int main(){
-    fflush(stdin);
     Conjuntos conjuntos;
     ConjuntosCreate(conjuntos);
     bool salir = false;
@@ -50,7 +49,6 @@ int main(){
                 printf("command not valid");
         }
         strdestruir(strcomando);
-        fflush(stdin);
     }while(!salir);
     return 0;
 }

@@ -86,7 +86,7 @@ bool validateParamConjunto(string s){
     return valid;
 }
 bool validateParamValor(string s){
-    return streq(s, "0") || atoi(s) != 0;
+    return streq(s, "0") || atoi(s) > 0;
 }
 bool validateParamName(string s){
     return true;
@@ -160,8 +160,8 @@ int parseParamValor(string s){
 void executeComandoHelp(){
     printf("No Implementado");
 }
-void executeComandoListAll(){
-    printf("No Implementado");
+void executeComandoListAll(Conjuntos conjuntos){
+    ConjuntosShow(conjuntos);
 }
 void executeComandoExit(){
     printf("Hasta la próxima");
@@ -182,13 +182,11 @@ void executeComandoEquals(){
     printf("No Implementado");
 }
 void executeComandoAdd(ListaString params, Conjuntos &conjuntos){
-    int id = parseParamConjunto(params->info);
-    int valor;
+    int valor, id = parseParamConjunto(params->info);
     params = params->sig;
     if(ConjuntosHasId(conjuntos, id)){
         Conjunto conjunto;
         ConjuntosGetById(conjuntos, id, conjunto);
-        //ConjuntoShow(conjunto);
         while(params != NULL){
             valor = parseParamValor(params->info);
             if(!ConjuntoPertenece(conjunto, valor))
@@ -201,11 +199,41 @@ void executeComandoAdd(ListaString params, Conjuntos &conjuntos){
         //error
     }
 }
-void executeComandoRemove(){
-    printf("No Implementado");
+void executeComandoRemove(ListaString params, Conjuntos &conjuntos){
+    int valor, id = parseParamConjunto(params->info);
+    params = params->sig;
+    if(ConjuntosHasId(conjuntos, id)){
+        Conjunto conjunto;
+        ConjuntosGetById(conjuntos, id, conjunto);
+        while(params != NULL){
+            valor = parseParamValor(params->info);
+            if(!ConjuntoPertenece(conjunto, valor))
+                ConjuntoRemoveValue(conjunto, valor);
+            params = params->sig;
+        }
+        printf("c%d = ", id);
+        ConjuntoShow(conjunto);
+    }else{
+        //error
+    }
 }
-void executeComandoMember(){
-    printf("No Implementado");
+void executeComandoMember(ListaString params, Conjuntos &conjuntos){
+    int valor, id = parseParamConjunto(params->info);
+    params = params->sig;
+    if(ConjuntosHasId(conjuntos, id)){
+        Conjunto conjunto;
+        ConjuntosGetById(conjuntos, id, conjunto);
+        while(params != NULL){
+            valor = parseParamValor(params->info);
+            if(ConjuntoPertenece(conjunto, valor))
+                printf(" true");
+            else
+                printf(" false");
+            params = params->sig;
+        }
+    }else{
+        //error
+    }
 }
 void executeComandoCreate(ListaString params, Conjuntos &conjuntos){
     Conjunto conjunto;
@@ -230,26 +258,20 @@ void executeComandoLoad(){
 
 void executeComando(Comando cmd, ListaString params, Conjuntos &conjuntos){
     switch(cmd){
-        case HELP: executeComandoHelp();break;
-        case LISTALL:
-        case EXIT:
-            break;
+        case HELP: executeComandoHelp(); break;
+        case LISTALL: executeComandoListAll(conjuntos); break;
+        case EXIT: break;
         case UNION:
         case INTERSECTION:
         case DIFFERENCE:
         case INCLUDED:
-        case EQUALS:
-            break;
-        case ADD: if(params != NULL)executeComandoAdd(params, conjuntos); break;
-        case REMOVE:
-        case MEMBER:
-            break;
+        case EQUALS: break;
+        case ADD: executeComandoAdd(params, conjuntos); break;
+        case REMOVE: executeComandoRemove(params, conjuntos); break;
+        case MEMBER: executeComandoMember(params, conjuntos); break;
         case CREATE: executeComandoCreate(params, conjuntos); break;
-        case SHOW:
-            break;
-        case SAVE:
-            break;
-        case LOAD:
-            break;
+        case SHOW: break;
+        case SAVE: break;
+        case LOAD: break;
     }
 }

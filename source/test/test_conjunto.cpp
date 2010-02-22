@@ -1,4 +1,4 @@
-#include <iostream>
+#include <stdlib.h>
 #include <stdio.h>
 
 #include "../lib/string_extended.h"
