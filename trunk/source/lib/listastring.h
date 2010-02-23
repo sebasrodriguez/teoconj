@@ -29,4 +29,6 @@ void ListaStringDelete(ListaString &lista);
 
 void ListaStringInsBack(ListaString &lista, string valor);
 
+void ListaStringSplit(string str, char c, ListaString &l);
+
 #endif

@@ -3,7 +3,7 @@
 
 #include<stdio.h>
 
-const int MAX = 80;
+const int CHAR_MAX = 80;
 const char EOS = '\0';
 const char EOL = '\n';
 const char BSP = ' ';
@@ -46,5 +46,7 @@ bool streq(string s, string t);
 void straddchar(string &s, char c);
 
 void strclear(string &s);
+
+void strcrearmax(string &s);
 
 #endif // STRING_H_INCLUDED

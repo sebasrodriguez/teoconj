@@ -12,11 +12,13 @@ typedef struct{
 
 void ConjuntosCreate(Conjuntos &c);
 
-void ConjuntosAdd(Conjuntos &c, ArbolInt conjunto);
+void ConjuntosAdd(Conjuntos &c, Conjunto conjunto);
 
 bool ConjuntosHasId(Conjuntos c, int id);
 
-void ConjuntosGetById(Conjuntos &c, int id, ArbolInt &conjunto);
+void ConjuntosAddValueToConj(Conjuntos &c, int id, int valor, Conjunto &conjunto);
+
+void ConjuntosGetById(Conjuntos &c, int id, Conjunto &conjunto);
 
 int ConjuntosGetNextId(Conjuntos c);
 

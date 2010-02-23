@@ -6,8 +6,6 @@
 #include "lib/string.h"
 #include "lib/arbolint.h"
 
-const int ELEMENTO_VACIO = -1;
-
 typedef ArbolInt Conjunto;
 
 void ConjuntoCreate(Conjunto &c);

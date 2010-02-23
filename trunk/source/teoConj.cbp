@@ -38,6 +38,10 @@
 		<Unit filename="Conjunto.h" />
 		<Unit filename="Conjuntos.cpp" />
 		<Unit filename="Conjuntos.h" />
+		<Unit filename="Executer.cpp" />
+		<Unit filename="Executer.h" />
+		<Unit filename="Params.cpp" />
+		<Unit filename="Params.h" />
 		<Unit filename="config.cpp" />
 		<Unit filename="config.h" />
 		<Unit filename="lib\arbolint.cpp" />
@@ -50,8 +54,6 @@
 		<Unit filename="lib\listastring.h" />
 		<Unit filename="lib\string.cpp" />
 		<Unit filename="lib\string.h" />
-		<Unit filename="lib\string_extended.cpp" />
-		<Unit filename="lib\string_extended.h" />
 		<Unit filename="lib\utils.cpp" />
 		<Unit filename="lib\utils.h" />
 		<Unit filename="main.cpp" />
