@@ -14,6 +14,22 @@ bool ConjuntosHasId(Conjuntos c, int id){
     return id <= c.tope;
 }
 
+void ConjuntosAddValueToConj(Conjuntos &c, int id, int valor, Conjunto &conjunto){
+    ListaABB aux;
+    aux = c.conjuntos;
+    bool found = false;
+    int i = 1;
+    while(!found){
+        if(i == id){
+            ConjuntoAddValue(aux->info, valor);
+            conjunto = aux->info;
+            found = true;
+        }
+        aux = aux->sig;
+        i ++;
+    }
+}
+
 void ConjuntosGetById(Conjuntos &c, int id, Conjunto &conjunto){
     ListaABB aux;
     aux = c.conjuntos;

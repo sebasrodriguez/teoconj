@@ -2,7 +2,6 @@
 
 void ConjuntoCreate(Conjunto &c){
     ArbolIntCreate(c);
-    ArbolIntAdd(c, ELEMENTO_VACIO);
 }
 
 void ConjuntoAddValue(Conjunto &c, int valor){
@@ -10,7 +9,7 @@ void ConjuntoAddValue(Conjunto &c, int valor){
 }
 
 void ConjuntoShow(Conjunto c){
-    string buffer; strcrear(buffer);
+    string buffer; strcrearmax(buffer);
     string result; strcrear(result);
     if(ConjuntoCount(c) > 0){
         ConjuntoOrdenBuffer(c, buffer, result);
@@ -22,10 +21,8 @@ void ConjuntoShow(Conjunto c){
 void ConjuntoOrdenBuffer(Conjunto c, string &buffer, string &result){
     if (c != NULL){
         ConjuntoOrdenBuffer(c->hizq, buffer, result);
-        if(c->info != ELEMENTO_VACIO){
-            straddchar(result, ','); straddchar(result, BSP);
-            strcon(result, itoa(c->info, buffer, 10));
-        }
+        straddchar(result, ','); straddchar(result, BSP);
+        strcon(result, itoa(c->info, buffer, 10));
         ConjuntoOrdenBuffer(c->hder, buffer, result);
     }
 }
@@ -35,7 +32,7 @@ bool ConjuntoPertenece(Conjunto c, int valor){
 }
 
 int ConjuntoCount(Conjunto c){
-    return ArbolIntCount(c) - 1;
+    return ArbolIntCount(c);
 }
 
 void ConjuntoRemoveValue(Conjunto &c, int valor){
