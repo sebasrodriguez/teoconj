@@ -22,4 +22,6 @@ int ConjuntoCount(Conjunto c);
 
 void ConjuntoRemoveValue(Conjunto &c, int valor);
 
+void ConjuntoCopy(Conjunto &c1, Conjunto c2);
+
 #endif
