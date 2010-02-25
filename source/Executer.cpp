@@ -13,9 +13,33 @@ void executeComandoExit()
     printf("Hasta la próxima");
 }
 
-void executeComandoIntersection()
+void Intersection(Conjunto c1, Conjunto c2, Conjunto &inter)
 {
-    printf("No Implementado");
+    if (c1 != NULL)
+    {
+        Intersection(c1->hizq, c2, inter);
+        if (ConjuntoPertenece(c2, c1->info))
+        {
+            ConjuntoAddValue(inter, c1->info);
+        }
+        Intersection(c1->hder, c2, inter);
+    }
+}
+
+void executeComandoIntersection(Params params, Conjuntos conjuntos)
+{
+    int id1 = parseParamConjunto(params->info);
+    int id2 = parseParamConjunto(params->sig->info);
+    if (ConjuntosHasId(conjuntos, id1) && ConjuntosHasId(conjuntos, id2)){
+        Conjunto c1, c2, inter;
+        ConjuntosGetById(conjuntos, id1, c1);
+        ConjuntosGetById(conjuntos, id2, c2);
+        ConjuntoCreate(inter);
+        Intersection(c1, c2, inter);
+        ConjuntoShow(inter);
+        //GUARDAR A LISTA DE CONJUNTOS?
+    }
+
 }
 void executeComandoDifference()
 {
@@ -32,7 +56,7 @@ void executeComandoEquals(Params params, Conjuntos conjuntos)
 
 }
 
-void Union(Conjunto c1, Conjunto &c2)
+void Union(Conjunto c1, Conjunto &c2)//EN EL SEUDOCODIGO ESTA EN "ORDEN"
 {
     if (c1 != NULL)
     {
@@ -179,6 +203,7 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
     case UNION:
         executeComandoUnion(params, conjuntos);
     case INTERSECTION:
+        executeComandoIntersection(params, conjuntos);
     case DIFFERENCE:
     case INCLUDED:
     case EQUALS:
