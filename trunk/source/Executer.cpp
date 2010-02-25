@@ -80,9 +80,30 @@ void executeComandoIncluded()
 }
 void executeComandoEquals(Params params, Conjuntos conjuntos)
 {
-    int oldid = parseParamConjunto(params->info);
-    // while(
+    int id1 = parseParamConjunto(params->info);
+    int id2 = parseParamConjunto(params->sig->info);
 
+    if (ConjuntosHasId(conjuntos, id1) && ConjuntosHasId(conjuntos, id2))
+    {
+        Conjunto c1, c2;
+
+        ConjuntosGetById(conjuntos, id1, c1);
+        ConjuntosGetById(conjuntos, id2, c2);
+
+        bool equals = ConjuntoEquals(c1, c2);
+        if(!equals)
+        {
+            printf("No son iguales");
+        }
+        else
+        {
+            printf("Son iguales");
+        }
+    }
+    else
+    {
+        //error
+    }
 }
 
 void executeComandoUnion(Params params, Conjuntos &conjuntos)
