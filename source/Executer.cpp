@@ -1,4 +1,5 @@
 #include "Executer.h"
+#include "Conjunto.h"
 
 void executeComandoHelp()
 {
@@ -18,11 +19,11 @@ void Intersection(Conjunto c1, Conjunto c2, Conjunto &inter)
     if (c1 != NULL)
     {
         Intersection(c1->hizq, c2, inter);
+        Intersection(c1->hder, c2, inter);
         if (ConjuntoPertenece(c2, c1->info))
         {
             ConjuntoAddValue(inter, c1->info);
         }
-        Intersection(c1->hder, c2, inter);
     }
 }
 
@@ -74,9 +75,34 @@ void executeComandoDifference(Params params, Conjuntos &conjuntos)
         //error
     }
 }
-void executeComandoIncluded()
+void executeComandoIncluded(Params params, Conjuntos &conjuntos)
 {
-    printf("No Implementado");
+    int id1 = parseParamConjunto(params->info);
+    int id2 = parseParamConjunto(params->sig->info);
+
+    if (ConjuntosHasId(conjuntos, id1) && ConjuntosHasId(conjuntos, id2))
+    {
+        Conjunto c1, c2, inter;
+
+        ConjuntosGetById(conjuntos, id1, c1);
+        ConjuntosGetById(conjuntos, id2, c2);
+
+        if (ConjuntoCount(c2) <= ConjuntoCount(c1))
+        {
+            printf("El primer conjunto NO esta incluido estrictamente en el segundo conjunto");
+        }
+        else
+        {
+            Intersection(c1, c2, inter);
+            if (ConjuntoEquals(c1, inter))
+            {
+                printf("El primer conjunto esta incluido estrictamente en el segundo conjunto");
+            }
+            else
+            {
+                printf("El primer conjunto NO esta incluido estrictamente en el segundo conjunto");
+            }
+        }
 }
 void executeComandoEquals(Params params, Conjuntos conjuntos)
 {
@@ -252,6 +278,8 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         executeComandoDifference(params, conjuntos);
         break;
     case INCLUDED:
+        executeComandoIncluded(params, conjuntos);
+        break;
     case EQUALS:
         executeComandoEquals(params, conjuntos);
         break;
