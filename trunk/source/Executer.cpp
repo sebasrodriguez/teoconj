@@ -26,24 +26,53 @@ void Intersection(Conjunto c1, Conjunto c2, Conjunto &inter)
     }
 }
 
-void executeComandoIntersection(Params params, Conjuntos conjuntos)
+void executeComandoIntersection(Params params, Conjuntos &conjuntos)
 {
     int id1 = parseParamConjunto(params->info);
     int id2 = parseParamConjunto(params->sig->info);
-    if (ConjuntosHasId(conjuntos, id1) && ConjuntosHasId(conjuntos, id2)){
+    if (ConjuntosHasId(conjuntos, id1) && ConjuntosHasId(conjuntos, id2))
+    {
         Conjunto c1, c2, inter;
         ConjuntosGetById(conjuntos, id1, c1);
         ConjuntosGetById(conjuntos, id2, c2);
         ConjuntoCreate(inter);
+
         Intersection(c1, c2, inter);
-        ConjuntoShow(inter);
-        //GUARDAR A LISTA DE CONJUNTOS?
+
+        AddAndShowConjunto(conjuntos, inter);
     }
 
 }
-void executeComandoDifference()
+
+void AddAndShowConjunto(Conjuntos &conjuntos, Conjunto conjunto)
 {
-    printf("No Implementado");
+    int newid = ConjuntosGetNextId(conjuntos);
+    ConjuntosAdd(conjuntos, conjunto);
+    printf("c%d = ", newid);
+    ConjuntoShow(conjunto);
+}
+
+void executeComandoDifference(Params params, Conjuntos &conjuntos)
+{
+    int id1 = parseParamConjunto(params->info);
+    int id2 = parseParamConjunto(params->sig->info);
+
+    if (ConjuntosHasId(conjuntos, id1) && ConjuntosHasId(conjuntos, id2))
+    {
+        Conjunto c1, c2, diff;
+
+        ConjuntosGetById(conjuntos, id1, c1);
+        ConjuntosGetById(conjuntos, id2, c2);
+        ConjuntoCreate(diff);
+
+        ConjuntoDifference(c1, c2, diff);
+
+        AddAndShowConjunto(conjuntos, diff);
+    }
+    else
+    {
+        //error
+    }
 }
 void executeComandoIncluded()
 {
@@ -56,25 +85,26 @@ void executeComandoEquals(Params params, Conjuntos conjuntos)
 
 }
 
-void executeComandoUnion(Params params, Conjuntos conjuntos)
+void executeComandoUnion(Params params, Conjuntos &conjuntos)
 {
     int id1 = parseParamConjunto(params->info);
     int id2 = parseParamConjunto(params->sig->info);
 
     if (ConjuntosHasId(conjuntos, id1) && ConjuntosHasId(conjuntos, id2))
     {
-        Conjunto c1, c2, c3;
+        Conjunto c1, c2, cUnion;
 
         ConjuntosGetById(conjuntos, id1, c1);
         ConjuntosGetById(conjuntos, id2, c2);
-        ConjuntoCopy(c3, c1);
+        ConjuntoCreate(cUnion);
 
-        ConjuntoUnion(c2, c3);
+        ConjuntoUnion(c1, c2, cUnion);
 
-        int newid = ConjuntosGetNextId(conjuntos);
-        ConjuntosAdd(conjuntos, c3);
-        printf("c%d = ", newid);
-        ConjuntoShow(c3);
+        AddAndShowConjunto(conjuntos, cUnion);
+    }
+    else
+    {
+        //error
     }
 }
 
@@ -198,6 +228,8 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         executeComandoIntersection(params, conjuntos);
         break;
     case DIFFERENCE:
+        executeComandoDifference(params, conjuntos);
+        break;
     case INCLUDED:
     case EQUALS:
         executeComandoEquals(params, conjuntos);

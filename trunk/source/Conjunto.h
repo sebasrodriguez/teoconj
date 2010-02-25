@@ -24,6 +24,10 @@ void ConjuntoRemoveValue(Conjunto &c, int valor);
 
 void ConjuntoUnion(Conjunto c1, Conjunto &c2);
 
+void ConjuntoUnion(Conjunto c1, Conjunto c2, Conjunto &c3);
+
+void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff);
+
 void ConjuntoCopy(Conjunto &c1, Conjunto c2);
 
 #endif

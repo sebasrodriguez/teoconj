@@ -6,6 +6,8 @@
 #include "Params.h"
 #include "Conjuntos.h"
 
+void AddAndShowConjunto(Conjuntos &conjuntos, Conjunto conjunto);
+
 void executeComandoHelp();
 
 void executeComandoListAll();
@@ -16,7 +18,7 @@ void executeComandoUnion();
 
 void Intersection(Conjunto c1, Conjunto c2, Conjunto &inter);
 
-void executeComandoIntersection(Params params, Conjuntos conjuntos);
+void executeComandoIntersection(Params params, Conjuntos &conjuntos);
 
 void executeComandoDifference();
 
