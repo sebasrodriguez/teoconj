@@ -80,13 +80,43 @@ void ConjuntoUnion(Conjunto c1, Conjunto c2, Conjunto &cUnion)
 
 void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff)
 {
-    if(c1 != NULL)
+    if (c1 != NULL)
     {
         ConjuntoDifference(c1->hizq, c2, diff);
-        if(!ConjuntoPertenece(c2, c1->info))
+        if (!ConjuntoPertenece(c2, c1->info))
         {
             ConjuntoAddValue(diff, c1->info);
         }
         ConjuntoDifference(c1->hder, c2, diff);
     }
+}
+
+bool RecursiveEquals(Conjunto c1, Conjunto c2, bool &equals)
+{
+    if (c1 != NULL && equals)
+    {
+        equals = ConjuntoPertenece(c2, c1->info);
+        if (equals)
+        {
+            RecursiveEquals(c1->hizq, c2, equals);
+            if (equals)
+            {
+                RecursiveEquals(c1->hder, c2, equals);
+            }
+        }
+    }
+}
+
+bool ConjuntoEquals(Conjunto c1, Conjunto c2)
+{
+    bool equals;
+    if (ConjuntoCount(c1) != ConjuntoCount(c2))
+    {
+        equals = false;
+    }
+    else
+    {
+        RecursiveEquals(c1, c2, equals);
+    }
+    return equals;
 }

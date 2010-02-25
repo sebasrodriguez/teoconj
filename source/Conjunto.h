@@ -28,6 +28,8 @@ void ConjuntoUnion(Conjunto c1, Conjunto c2, Conjunto &c3);
 
 void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff);
 
+bool ConjuntoEquals(Conjunto c1, Conjunto c2);
+
 void ConjuntoCopy(Conjunto &c1, Conjunto c2);
 
 #endif
