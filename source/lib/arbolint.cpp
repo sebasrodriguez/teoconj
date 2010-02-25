@@ -73,8 +73,8 @@ void ArbolIntDelete (ArbolInt a){
 
 void ArbolIntCopy(ArbolInt &a, ArbolInt b){
     if(b != NULL){
-        ArbolIntCopy(a->hizq, b->hizq);
         a = ArbolIntCons(b->info, NULL, NULL);
+        ArbolIntCopy(a->hizq, b->hizq);
         ArbolIntCopy(a->hder, b->hder);
     }
 }
