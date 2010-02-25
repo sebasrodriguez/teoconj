@@ -63,11 +63,11 @@ void ConjuntoUnion(Conjunto c1, Conjunto &c2)
 {
     if (c1 != NULL)
     {
+        ConjuntoUnion(c1->hizq, c2);
         if (!ConjuntoPertenece(c2, c1->info))
         {
             ConjuntoAddValue(c2, c1->info);
         }
-        ConjuntoUnion(c1->hizq, c2);
         ConjuntoUnion(c1->hder, c2);
     }
 }
