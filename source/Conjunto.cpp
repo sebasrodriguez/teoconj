@@ -58,3 +58,16 @@ void ConjuntoCopy(Conjunto &c1, Conjunto c2)
     ConjuntoCreate(c1);
     ArbolIntCopy(c1, c2);
 }
+
+void ConjuntoUnion(Conjunto c1, Conjunto &c2)
+{
+    if (c1 != NULL)
+    {
+        if (!ConjuntoPertenece(c2, c1->info))
+        {
+            ConjuntoAddValue(c2, c1->info);
+        }
+        ConjuntoUnion(c1->hizq, c2);
+        ConjuntoUnion(c1->hder, c2);
+    }
+}

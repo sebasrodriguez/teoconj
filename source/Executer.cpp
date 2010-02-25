@@ -56,19 +56,6 @@ void executeComandoEquals(Params params, Conjuntos conjuntos)
 
 }
 
-void Union(Conjunto c1, Conjunto &c2)//EN EL SEUDOCODIGO ESTA EN "ORDEN"
-{
-    if (c1 != NULL)
-    {
-        if (!ConjuntoPertenece(c2, c1->info))
-        {
-            ConjuntoAddValue(c2, c1->info);
-        }
-        Union(c1->hizq, c2);
-        Union(c1->hder, c2);
-    }
-}
-
 void executeComandoUnion(Params params, Conjuntos conjuntos)
 {
     int id1 = parseParamConjunto(params->info);
@@ -82,7 +69,11 @@ void executeComandoUnion(Params params, Conjuntos conjuntos)
         ConjuntosGetById(conjuntos, id2, c2);
         ConjuntoCopy(c3, c1);
 
-        Union(c2, c3);
+        ConjuntoUnion(c2, c3);
+
+        int newid = ConjuntosGetNextId(conjuntos);
+        ConjuntosAdd(conjuntos, c3);
+        printf("c%d = ", newid);
         ConjuntoShow(c3);
     }
 }
@@ -202,8 +193,10 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         break;
     case UNION:
         executeComandoUnion(params, conjuntos);
+        break;
     case INTERSECTION:
         executeComandoIntersection(params, conjuntos);
+        break;
     case DIFFERENCE:
     case INCLUDED:
     case EQUALS:
