@@ -71,3 +71,22 @@ void ConjuntoUnion(Conjunto c1, Conjunto &c2)
         ConjuntoUnion(c1->hder, c2);
     }
 }
+
+void ConjuntoUnion(Conjunto c1, Conjunto c2, Conjunto &cUnion)
+{
+    ConjuntoCopy(cUnion, c1);
+    ConjuntoUnion(c2, cUnion);
+}
+
+void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff)
+{
+    if(c1 != NULL)
+    {
+        ConjuntoDifference(c1->hizq, c2, diff);
+        if(!ConjuntoPertenece(c2, c1->info))
+        {
+            ConjuntoAddValue(diff, c1->info);
+        }
+        ConjuntoDifference(c1->hder, c2, diff);
+    }
+}
