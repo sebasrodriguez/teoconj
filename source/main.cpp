@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "lib/string_extended.h"
+#include "lib/string.h"
 #include "config.h"
 #include "Executer.h"
 
