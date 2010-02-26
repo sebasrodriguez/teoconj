@@ -79,8 +79,9 @@ void executeComandoDifference(Params params, Conjuntos &conjuntos)
         //error
     }
 }
-void executeComandoIncluded(Params params, Conjuntos conjuntos)
+bool executeComandoIncluded(Params params, Conjuntos conjuntos)
 {
+    bool incluido;
     int id1 = parseParamConjunto(params->info);
     int id2 = parseParamConjunto(params->sig->info);
 
@@ -93,7 +94,7 @@ void executeComandoIncluded(Params params, Conjuntos conjuntos)
 
         if (ConjuntoCount(c2) <= ConjuntoCount(c1))
         {
-            printf("El primer conjunto NO esta incluido estrictamente en el segundo conjunto");
+            incluido = false;
         }
         else
         {
@@ -101,18 +102,19 @@ void executeComandoIncluded(Params params, Conjuntos conjuntos)
             Intersection(c1, c2, inter);
             if (ConjuntoEquals(c1, inter))
             {
-                printf("El primer conjunto esta incluido estrictamente en el segundo conjunto");
+                incluido = true;
             }
             else
             {
-                printf("El primer conjunto NO esta incluido estrictamente en el segundo conjunto");
+                incluido = false;
             }
         }
     }
     else
     {
-        //error
+        incluido = false;
     }
+    return incluido;
 }
 void executeComandoEquals(Params params, Conjuntos conjuntos)
 {
@@ -300,7 +302,14 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         executeComandoDifference(params, conjuntos);
         break;
     case INCLUDED:
-        executeComandoIncluded(params, conjuntos);
+        if (!executeComandoIncluded(params, conjuntos))
+        {
+            printf("El primer conjunto NO esta incluido estrictamente en el segundo");
+        }
+        else
+        {
+            printf("El primer conjunto esta incluido estrictamente en el segundo");
+        }
         break;
     case EQUALS:
         executeComandoEquals(params, conjuntos);
