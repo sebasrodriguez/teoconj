@@ -42,6 +42,10 @@ void executeComandoIntersection(Params params, Conjuntos &conjuntos)
 
         AddAndShowConjunto(conjuntos, inter);
     }
+    else
+    {
+        //error
+    }
 
 }
 
@@ -75,14 +79,14 @@ void executeComandoDifference(Params params, Conjuntos &conjuntos)
         //error
     }
 }
-void executeComandoIncluded(Params params, Conjuntos &conjuntos)
+void executeComandoIncluded(Params params, Conjuntos conjuntos)
 {
     int id1 = parseParamConjunto(params->info);
     int id2 = parseParamConjunto(params->sig->info);
 
     if (ConjuntosHasId(conjuntos, id1) && ConjuntosHasId(conjuntos, id2))
     {
-        Conjunto c1, c2, inter;
+        Conjunto c1, c2;
 
         ConjuntosGetById(conjuntos, id1, c1);
         ConjuntosGetById(conjuntos, id2, c2);
@@ -93,6 +97,7 @@ void executeComandoIncluded(Params params, Conjuntos &conjuntos)
         }
         else
         {
+            Conjunto inter;
             Intersection(c1, c2, inter);
             if (ConjuntoEquals(c1, inter))
             {
@@ -103,6 +108,11 @@ void executeComandoIncluded(Params params, Conjuntos &conjuntos)
                 printf("El primer conjunto NO esta incluido estrictamente en el segundo conjunto");
             }
         }
+    }
+    else
+    {
+        //error
+    }
 }
 void executeComandoEquals(Params params, Conjuntos conjuntos)
 {
@@ -247,9 +257,21 @@ void executeComandoCreate(Params params, Conjuntos &conjuntos)
     printf("c%d = ", id);
     ConjuntoShow(conjunto);
 }
-void executeComandoShow()
+void executeComandoShow(Params params, Conjuntos conjuntos)
 {
-    printf("No Implementado");
+    int id1 = parseParamConjunto(params->info);
+
+    if (ConjuntosHasId(conjuntos, id1))
+    {
+        Conjunto c1;
+
+        ConjuntosGetById(conjuntos, id1, c1);
+        ConjuntoShow(c1);
+    }
+    else
+    {
+        //error
+    }
 }
 void executeComandoLoad()
 {
@@ -296,6 +318,7 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         executeComandoCreate(params, conjuntos);
         break;
     case SHOW:
+        executeComandoShow(params, conjuntos);
         break;
     case SAVE:
         break;
