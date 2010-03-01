@@ -1,9 +1,42 @@
 #include "Executer.h"
 #include "Conjunto.h"
+#include "lib\utils.h"
 
 void executeComandoHelp()
 {
-    printf("No Implementado");
+    nl();
+    printf("AYUDA DE SINTAXIS:");
+    nl();
+    printf("* Sintaxis help: help");
+    nl();
+    printf("* Sintaxis create: create valor1 valor2 ... valorN");
+    nl();
+    printf("* Sintaxis add: add cN valor");
+    nl();
+    printf("* Sintaxis remove: remove cN valor");
+    nl();
+    printf("* Sintaxis member: member cN valor");
+    nl();
+    printf("* Sintaxis union: union cN cM");
+    nl();
+    printf("* Sintaxis intersection: intersection cN cM");
+    nl();
+    printf("* Sintaxis difference: difference cN cM");
+    nl();
+    printf("* Sintaxis included: included cN cM");
+    nl();
+    printf("* Sintaxis equals: equals cN cM");
+    nl();
+    printf("* Sintaxis show: show cN");
+    nl();
+    printf("* Sintaxis listall: listall");
+    nl();
+    printf("* Sintaxis save: save cN nombreArchivo.txt");
+    nl();
+    printf("* Sintaxis load: load nombreArchivo.txt");
+    nl();
+    printf("* Sintaxis exit: exit");
+    nl();
 }
 void executeComandoListAll(Conjuntos conjuntos)
 {
@@ -219,7 +252,7 @@ void executeComandoRemove(Params params, Conjuntos &conjuntos)
         //error
     }
 }
-void executeComandoMember(Params params, Conjuntos conjuntos)
+void executeComandoMember(Params params, Conjuntos conjuntos)//DEBE SER BOOL
 {
     int valor, id = parseParamConjunto(params->info);
     params = params->sig;
