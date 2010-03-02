@@ -16,8 +16,6 @@ void executeComandoExit();
 
 void executeComandoUnion();
 
-void Intersection(Conjunto c1, Conjunto c2, Conjunto &inter);
-
 void executeComandoIntersection(Params params, Conjuntos &conjuntos);
 
 void executeComandoDifference();
