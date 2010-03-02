@@ -7,35 +7,35 @@ void executeComandoHelp()
     nl();
     printf("AYUDA DE SINTAXIS:");
     nl();
-    printf("* Sintaxis help: help");
+    printf("* help: help");
     nl();
-    printf("* Sintaxis create: create valor1 valor2 ... valorN");
+    printf("* create: create valor1 valor2 ... valorN");
     nl();
-    printf("* Sintaxis add: add cN valor");
+    printf("* add: add cN valor");
     nl();
-    printf("* Sintaxis remove: remove cN valor");
+    printf("* remove: remove cN valor");
     nl();
-    printf("* Sintaxis member: member cN valor");
+    printf("* member: member cN valor");
     nl();
-    printf("* Sintaxis union: union cN cM");
+    printf("* union: union cN cM");
     nl();
-    printf("* Sintaxis intersection: intersection cN cM");
+    printf("* intersection: intersection cN cM");
     nl();
-    printf("* Sintaxis difference: difference cN cM");
+    printf("* difference: difference cN cM");
     nl();
-    printf("* Sintaxis included: included cN cM");
+    printf("* included: included cN cM");
     nl();
-    printf("* Sintaxis equals: equals cN cM");
+    printf("* equals: equals cN cM");
     nl();
-    printf("* Sintaxis show: show cN");
+    printf("* show: show cN");
     nl();
-    printf("* Sintaxis listall: listall");
+    printf("* listall: listall");
     nl();
-    printf("* Sintaxis save: save cN nombreArchivo.txt");
+    printf("* save: save cN nombreArchivo.txt");
     nl();
-    printf("* Sintaxis load: load nombreArchivo.txt");
+    printf("* load: load nombreArchivo.txt");
     nl();
-    printf("* Sintaxis exit: exit");
+    printf("* exit: exit");
     nl();
 }
 void executeComandoListAll(Conjuntos conjuntos)
@@ -112,9 +112,8 @@ void executeComandoDifference(Params params, Conjuntos &conjuntos)
         //error
     }
 }
-bool executeComandoIncluded(Params params, Conjuntos conjuntos)
+void executeComandoIncluded(Params params, Conjuntos conjuntos)
 {
-    bool incluido;
     int id1 = parseParamConjunto(params->info);
     int id2 = parseParamConjunto(params->sig->info);
 
@@ -127,7 +126,7 @@ bool executeComandoIncluded(Params params, Conjuntos conjuntos)
 
         if (ConjuntoCount(c2) <= ConjuntoCount(c1))
         {
-            incluido = false;
+            printf("El primer conjunto NO esta incluido estrictamente en el segundo");
         }
         else
         {
@@ -135,19 +134,18 @@ bool executeComandoIncluded(Params params, Conjuntos conjuntos)
             Intersection(c1, c2, inter);
             if (ConjuntoEquals(c1, inter))
             {
-                incluido = true;
+                printf("El primer conjunto esta incluido estrictamente en el segundo");
             }
             else
             {
-                incluido = false;
+                printf("El primer conjunto NO esta incluido estrictamente en el segundo");
             }
         }
     }
     else
     {
-        incluido = false;
+        //error
     }
-    return incluido;
 }
 void executeComandoEquals(Params params, Conjuntos conjuntos)
 {
@@ -335,14 +333,7 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         executeComandoDifference(params, conjuntos);
         break;
     case INCLUDED:
-        if (!executeComandoIncluded(params, conjuntos))
-        {
-            printf("El primer conjunto NO esta incluido estrictamente en el segundo");
-        }
-        else
-        {
-            printf("El primer conjunto esta incluido estrictamente en el segundo");
-        }
+        executeComandoIncluded(params, conjuntos);
         break;
     case EQUALS:
         executeComandoEquals(params, conjuntos);
