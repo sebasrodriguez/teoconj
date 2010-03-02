@@ -47,19 +47,6 @@ void executeComandoExit()
     printf("Hasta la próxima");
 }
 
-void Intersection(Conjunto c1, Conjunto c2, Conjunto &inter)
-{
-    if (c1 != NULL)
-    {
-        Intersection(c1->hizq, c2, inter);
-        Intersection(c1->hder, c2, inter);
-        if (ConjuntoPertenece(c2, c1->info))
-        {
-            ConjuntoAddValue(inter, c1->info);
-        }
-    }
-}
-
 void executeComandoIntersection(Params params, Conjuntos &conjuntos)
 {
     int id1 = parseParamConjunto(params->info);
@@ -71,7 +58,7 @@ void executeComandoIntersection(Params params, Conjuntos &conjuntos)
         ConjuntosGetById(conjuntos, id2, c2);
         ConjuntoCreate(inter);
 
-        Intersection(c1, c2, inter);
+        ConjuntoIntersection(c1, c2, inter);
 
         AddAndShowConjunto(conjuntos, inter);
     }
@@ -131,7 +118,7 @@ void executeComandoIncluded(Params params, Conjuntos conjuntos)
         else
         {
             Conjunto inter;
-            Intersection(c1, c2, inter);
+            ConjuntoIntersection(c1, c2, inter);
             if (ConjuntoEquals(c1, inter))
             {
                 printf("El primer conjunto esta incluido estrictamente en el segundo");
@@ -250,7 +237,7 @@ void executeComandoRemove(Params params, Conjuntos &conjuntos)
         //error
     }
 }
-void executeComandoMember(Params params, Conjuntos conjuntos)//DEBE SER BOOL
+void executeComandoMember(Params params, Conjuntos conjuntos)
 {
     int valor, id = parseParamConjunto(params->info);
     params = params->sig;

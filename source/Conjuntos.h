@@ -24,4 +24,6 @@ int ConjuntosGetNextId(Conjuntos c);
 
 void ConjuntosShow(Conjuntos c);
 
+void ConjuntoIntersection(Conjunto c1, Conjunto c2, Conjunto &inter);
+
 #endif
