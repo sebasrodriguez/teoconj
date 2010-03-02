@@ -126,5 +126,5 @@ void strclear(string &s){
 
 void strcrearmax(string &s){
     s = new char[CHAR_MAX];
-    //s[CHAR_MAX - 1] = EOS;
+    s[0] = EOS;
 }

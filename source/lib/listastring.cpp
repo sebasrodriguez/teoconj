@@ -66,13 +66,14 @@ void ListaStringSplit(string str, char c, ListaString &l){
             }
         }else{
             if(!scanning){
-                strcrear(buffer);
+                strcrearmax(buffer);
                 scanning = true;
             }
             straddchar(buffer, str[i]);
         }
         i ++;
     }
+    //TODO: eliminar buffer
     if(scanning)
         ListaStringInsBack(l, buffer);
 }
