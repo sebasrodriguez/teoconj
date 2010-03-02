@@ -22,7 +22,7 @@ void executeComandoIntersection(Params params, Conjuntos &conjuntos);
 
 void executeComandoDifference();
 
-bool executeComandoIncluded(Params params, Conjuntos conjuntos);
+void executeComandoIncluded(Params params, Conjuntos conjuntos);
 
 void executeComandoEquals();
 
