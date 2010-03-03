@@ -49,4 +49,6 @@ void strclear(string &s);
 
 void strcrearmax(string &s);
 
+void strcast(string &s, string t);
+
 #endif // STRING_H_INCLUDED

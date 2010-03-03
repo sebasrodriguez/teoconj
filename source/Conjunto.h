@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "lib/string.h"
 #include "lib/arbolint.h"
+#include "lib/file.h"
 
 typedef ArbolInt Conjunto;
 
@@ -31,5 +32,13 @@ void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff);
 bool ConjuntoEquals(Conjunto c1, Conjunto c2);
 
 void ConjuntoCopy(Conjunto &c1, Conjunto c2);
+
+void ConjuntoSave(string name, Conjunto c);
+
+void ConjuntoOrdenSave(ffile &file, Conjunto c);
+
+void ConjuntoLoad(string name, Conjunto &c);
+
+void ConjuntoOrdenLoad(ffile &file, Conjunto &c);
 
 #endif

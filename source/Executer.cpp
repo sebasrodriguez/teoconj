@@ -279,24 +279,39 @@ void executeComandoCreate(Params params, Conjuntos &conjuntos)
 }
 void executeComandoShow(Params params, Conjuntos conjuntos)
 {
-    int id1 = parseParamConjunto(params->info);
-
-    if (ConjuntosHasId(conjuntos, id1))
+    int id = parseParamConjunto(params->info);
+    if (ConjuntosHasId(conjuntos, id))
     {
-        Conjunto c1;
-
-        ConjuntosGetById(conjuntos, id1, c1);
-        ConjuntoShow(c1);
+        Conjunto c;
+        ConjuntosGetById(conjuntos, id, c);
+        ConjuntoShow(c);
     }
     else
     {
         //error
     }
 }
-void executeComandoLoad()
+
+void executeComandoSave(Params params, Conjuntos conjuntos)
 {
-    printf("No Implementado");
+    int id = parseParamConjunto(params->info);
+    if(ConjuntosHasId(conjuntos, id)){
+        Conjunto c;
+        ConjuntosGetById(conjuntos, id, c);
+        ConjuntoSave(params->sig->info, c);
+        printf("c%d almacenado correctamente en ", id);
+        print(params->sig->info);
+    }else{
+    }
 }
+
+void executeComandoLoad(Params params, Conjuntos &conjuntos)
+{
+    Conjunto c;
+    ConjuntoLoad(params->info, c);
+    AddAndShowConjunto(conjuntos, c);
+}
+
 
 void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
 {
@@ -309,6 +324,7 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         executeComandoListAll(conjuntos);
         break;
     case EXIT:
+        executeComandoExit();
         break;
     case UNION:
         executeComandoUnion(params, conjuntos);
@@ -341,8 +357,10 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         executeComandoShow(params, conjuntos);
         break;
     case SAVE:
+        executeComandoSave(params, conjuntos);
         break;
     case LOAD:
+        //executeComandoLoad(params, conjuntos);
         break;
     }
 }

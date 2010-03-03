@@ -2,7 +2,6 @@
 #include <stdio.h>
 
 #include "lib/string.h"
-#include "config.h"
 #include "Executer.h"
 
 int main()
