@@ -128,3 +128,13 @@ void strcrearmax(string &s){
     s = new char[CHAR_MAX];
     s[0] = EOS;
 }
+
+void strcast(string &s, string t){
+    s = new char[strlar(t) + 1];
+    int i = 0;
+    while (t[i] != EOS){
+        straddchar(s, t[i]);
+        i++;
+    }
+}
+

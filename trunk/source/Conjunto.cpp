@@ -91,7 +91,7 @@ void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff)
     }
 }
 
-bool RecursiveEquals(Conjunto c1, Conjunto c2, bool &equals)
+void RecursiveEquals(Conjunto c1, Conjunto c2, bool &equals)
 {
     if (c1 != NULL && equals)
     {
@@ -119,4 +119,31 @@ bool ConjuntoEquals(Conjunto c1, Conjunto c2)
         RecursiveEquals(c1, c2, equals);
     }
     return equals;
+}
+
+void ConjuntoSave(string name, Conjunto c){
+    ffile file = fopen(name, "wb");
+    ConjuntoOrdenSave(file, c);
+    fclose(file);
+}
+void ConjuntoOrdenSave(ffile &file, Conjunto c){
+    if (c != NULL)
+    {
+        ConjuntoOrdenSave(file, c->hizq);
+        fbajarInt(c->info, file);
+        ConjuntoOrdenSave(file, c->hder);
+    }
+}
+
+void ConjuntoLoad(string name, Conjunto &c){
+    ffile file = fopen(name, "rb");
+    ConjuntoOrdenLoad(file, c);
+    fclose(file);
+}
+void ConjuntoOrdenLoad(ffile &file, Conjunto &c){
+    ConjuntoOrdenLoad(file, c->hizq);
+    int i;
+    flevantarInt(i, file);
+    ConjuntoAddValue(c, i);
+    ConjuntoOrdenLoad(file, c->hder);
 }
