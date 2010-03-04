@@ -147,7 +147,7 @@ void executeComandoEquals(Params params, Conjuntos conjuntos)
         ConjuntosGetById(conjuntos, id2, c2);
 
         bool equals = ConjuntoEquals(c1, c2);
-        if(!equals)
+        if (!equals)
         {
             printf("No son iguales");
         }
@@ -214,6 +214,20 @@ void executeComandoAdd(Params params, Conjuntos &conjuntos)
         //error
     }
 }
+
+void UpdateConjuntoRef(Conjuntos &conjuntos, Conjunto conjunto, int id)
+{
+    ListaABB aux;
+    aux = conjuntos.conjuntos;
+    int count = 1;
+    while(count < id)
+    {
+        aux = aux->sig;
+        count++;
+    }
+    aux->info = conjunto;
+}
+
 void executeComandoRemove(Params params, Conjuntos &conjuntos)
 {
     int valor, id = parseParamConjunto(params->info);
@@ -225,10 +239,13 @@ void executeComandoRemove(Params params, Conjuntos &conjuntos)
         while (params != NULL)
         {
             valor = parseParamValor(params->info);
-            if (!ConjuntoPertenece(conjunto, valor))
+            if (ConjuntoPertenece(conjunto, valor))
+            {
                 ConjuntoRemoveValue(conjunto, valor);
+            }
             params = params->sig;
         }
+        UpdateConjuntoRef(conjuntos, conjunto, id);
         printf("c%d = ", id);
         ConjuntoShow(conjunto);
     }
@@ -295,13 +312,16 @@ void executeComandoShow(Params params, Conjuntos conjuntos)
 void executeComandoSave(Params params, Conjuntos conjuntos)
 {
     int id = parseParamConjunto(params->info);
-    if(ConjuntosHasId(conjuntos, id)){
+    if (ConjuntosHasId(conjuntos, id))
+    {
         Conjunto c;
         ConjuntosGetById(conjuntos, id, c);
         ConjuntoSave(params->sig->info, c);
         printf("c%d almacenado correctamente en ", id);
         print(params->sig->info);
-    }else{
+    }
+    else
+    {
     }
 }
 
