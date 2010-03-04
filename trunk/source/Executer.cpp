@@ -328,6 +328,7 @@ void executeComandoSave(Params params, Conjuntos conjuntos)
 void executeComandoLoad(Params params, Conjuntos &conjuntos)
 {
     Conjunto c;
+    ConjuntoCreate(c);
     ConjuntoLoad(params->info, c);
     AddAndShowConjunto(conjuntos, c);
 }
@@ -380,7 +381,7 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         executeComandoSave(params, conjuntos);
         break;
     case LOAD:
-        //executeComandoLoad(params, conjuntos);
+        executeComandoLoad(params, conjuntos);
         break;
     }
 }

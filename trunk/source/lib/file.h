@@ -9,6 +9,6 @@ void fbajarInt (int entero, ffile f );
 
 void fbajarLong(long int entero, ffile f);
 
-void flevantarInt (int &entero, FILE * f);
+void flevantarInt (int &entero, ffile &f);
 
 #endif // FILE_H_INCLUDED
