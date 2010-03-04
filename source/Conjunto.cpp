@@ -7,6 +7,7 @@ void ConjuntoCreate(Conjunto &c)
 
 void ConjuntoAddValue(Conjunto &c, int valor)
 {
+
     ArbolIntAdd(c, valor);
 }
 
@@ -137,13 +138,11 @@ void ConjuntoOrdenSave(ffile &file, Conjunto c){
 
 void ConjuntoLoad(string name, Conjunto &c){
     ffile file = fopen(name, "rb");
-    ConjuntoOrdenLoad(file, c);
-    fclose(file);
-}
-void ConjuntoOrdenLoad(ffile &file, Conjunto &c){
-    ConjuntoOrdenLoad(file, c->hizq);
     int i;
     flevantarInt(i, file);
-    ConjuntoAddValue(c, i);
-    ConjuntoOrdenLoad(file, c->hder);
+    while(!feof(file)){
+        ConjuntoAddValue(c, i);
+        flevantarInt(i, file);
+    }
+    fclose(file);
 }
