@@ -44,7 +44,7 @@ void executeComandoListAll(Conjuntos conjuntos)
 }
 void executeComandoExit()
 {
-    printf("Hasta la próxima");
+    printf("Hasta la proxima");
 }
 
 void executeComandoIntersection(Params params, Conjuntos &conjuntos)

@@ -4,8 +4,23 @@
 #include "lib/string.h"
 #include "Executer.h"
 
+void showBanner()
+{
+    printf("                      #####                            #        ###   \n");
+    printf(" ##### ######  ####  #     #  ####  #    #      #     ##       #   #  \n");
+    printf("   #   #      #    # #       #    # ##   #      #    # #      #     # \n");
+    printf("   #   #####  #    # #       #    # # #  #      #      #      #     # \n");
+    printf("   #   #      #    # #       #    # #  # #      #      #      #     # \n");
+    printf("   #   #      #    # #     # #    # #   ## #    #      #   ##  #   #  \n");
+    printf("   #   ######  ####   #####   ####  #    #  ####     ##### ##   ###   \n");
+    printf("\n");
+    printf("======================================================================");
+    printf("\n");
+}
+
 int main()
 {
+    showBanner();
     Conjuntos conjuntos;
     ConjuntosCreate(conjuntos);
     bool salir = false;
@@ -28,19 +43,25 @@ int main()
                 params = comando->sig;
                 if (ParamsValidate(cmd, params))
                 {
-                    printf("%s: ", CONSOLE_RESULT_PROMPT);
+                    if (cmd != HELP && cmd != EXIT)
+                    {
+                        printf("%s: ", CONSOLE_RESULT_PROMPT);
+                    }
+                    printf("\n");
                     executeComando(cmd, params, conjuntos);
                     printf("\n");
                     salir = (cmd == EXIT);
                 }
                 else
                 {
-                    printf("valid command, params not valid");
+                    printf("Parametros incorrectos");
+                    printf("\n");
                 }
             }
             else
             {
-                printf("command not valid");
+                printf("Comando incorrecto");
+                printf("\n");
             }
         }
         strdestruir(strcomando);

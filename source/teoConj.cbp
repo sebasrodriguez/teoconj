@@ -70,6 +70,7 @@
 			<debugger>
 				<search_path add="..\..\..\..\..\..\MinGW" />
 			</debugger>
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
