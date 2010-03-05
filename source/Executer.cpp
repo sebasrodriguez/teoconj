@@ -1,5 +1,4 @@
 #include "Executer.h"
-#include "lib\utils.h"
 
 void executeComandoHelp()
 {
@@ -181,25 +180,12 @@ void executeComandoUnion(Params params, Conjuntos &conjuntos)
 
 void executeComandoAdd(Params params, Conjuntos &conjuntos)
 {
-    int valor, id = parseParamConjunto(params->info);
+    int id = parseParamConjunto(params->info);
     params = params->sig;
     if (ConjuntosHasId(conjuntos, id))
     {
         Conjunto conjunto;
-        ConjuntosGetById(conjuntos, id, conjunto);
-        if (ConjuntoCount(conjunto) == 0)
-        {
-            valor = parseParamValor(params->info);
-            ConjuntosAddValueToConj(conjuntos, id, valor, conjunto);
-            params = params->sig;
-        }
-        while (params != NULL)
-        {
-            valor = parseParamValor(params->info);
-            if (!ConjuntoPertenece(conjunto, valor))
-                ConjuntoAddValue(conjunto, valor);
-            params = params->sig;
-        }
+        ConjuntosAddValueToConj(conjuntos, id, params, conjunto);
         printf(MESSAGE_PRE_C, id);
         ConjuntoShow(conjunto);
     }
@@ -209,37 +195,14 @@ void executeComandoAdd(Params params, Conjuntos &conjuntos)
     }
 }
 
-void UpdateConjuntoRef(Conjuntos &conjuntos, Conjunto conjunto, int id)
-{
-    ListaABB aux;
-    aux = conjuntos.conjuntos;
-    int count = 1;
-    while(count < id)
-    {
-        aux = aux->sig;
-        count++;
-    }
-    aux->info = conjunto;
-}
-
 void executeComandoRemove(Params params, Conjuntos &conjuntos)
 {
-    int valor, id = parseParamConjunto(params->info);
+    int id = parseParamConjunto(params->info);
     params = params->sig;
     if (ConjuntosHasId(conjuntos, id))
     {
         Conjunto conjunto;
-        ConjuntosGetById(conjuntos, id, conjunto);
-        while (params != NULL)
-        {
-            valor = parseParamValor(params->info);
-            if (ConjuntoPertenece(conjunto, valor))
-            {
-                ConjuntoRemoveValue(conjunto, valor);
-            }
-            params = params->sig;
-        }
-        UpdateConjuntoRef(conjuntos, conjunto, id);
+        ConjuntosRemoveValueFromConj(conjuntos, id, params, conjunto);
         printf(MESSAGE_PRE_C, id);
         ConjuntoShow(conjunto);
     }
@@ -295,6 +258,7 @@ void executeComandoShow(Params params, Conjuntos conjuntos)
     {
         Conjunto c;
         ConjuntosGetById(conjuntos, id, c);
+        printf(MESSAGE_PRE_C, id);
         ConjuntoShow(c);
     }
     else
@@ -308,14 +272,16 @@ void executeComandoSave(Params params, Conjuntos conjuntos)
     int id = parseParamConjunto(params->info);
     if (ConjuntosHasId(conjuntos, id))
     {
-        Conjunto c;
-        ConjuntosGetById(conjuntos, id, c);
         string path;
-        strcop(path, DATA_FILE_PATH);
-        strcon(path, params->sig->info);
-        ConjuntoSave(path, c);
-        printf("c%d almacenado correctamente en ", id);
-        print(params->sig->info);
+        getFilePath(params->sig->info, path);
+        bool exists = fexists(path);
+        if(!exists || (exists && confirm(Q_REPLASE))){
+            Conjunto c;
+            ConjuntosGetById(conjuntos, id, c);
+            ConjuntoSave(path, c);
+            printf(MESSAGE_SAVED, id, params->sig->info);
+        }
+
     }
     else
     {
@@ -325,12 +291,17 @@ void executeComandoSave(Params params, Conjuntos conjuntos)
 
 void executeComandoLoad(Params params, Conjuntos &conjuntos)
 {
-    Conjunto c;
-    ConjuntoCreate(c);
-    ConjuntoLoad(params->info, c);
-    ConjuntosAddAndShow(conjuntos, c);
+    string path;
+    getFilePath(params->info, path);
+    if(fexists(path)){
+        Conjunto c;
+        ConjuntoCreate(c);
+        ConjuntoLoad(path, c);
+        ConjuntosAddAndShow(conjuntos, c);
+    }else{
+        printError(ERROR_WRONG_FILENAME);
+    }
 }
-
 
 void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
 {
