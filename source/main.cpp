@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "lib/string.h"
+#include "lib\utils.h"
 #include "Executer.h"
 
 void showBanner()
@@ -13,9 +14,9 @@ void showBanner()
     printf("   #   #      #    # #       #    # #  # #      #      #      #     # \n");
     printf("   #   #      #    # #     # #    # #   ## #    #      #   ##  #   #  \n");
     printf("   #   ######  ####   #####   ####  #    #  ####     ##### ##   ###   \n");
-    printf("\n");
+    nl();
     printf("======================================================================");
-    printf("\n");
+    nl();
 }
 
 int main()
@@ -28,7 +29,7 @@ int main()
     string strcomando;
     do
     {
-        printf("%s: ", CONSOLE_PROMPT);
+        printf(CONSOLE_PROMPT);
         ListaStringCreate(comando);
         strcrear(strcomando);
         scan(strcomando);
@@ -43,25 +44,19 @@ int main()
                 params = comando->sig;
                 if (ParamsValidate(cmd, params))
                 {
-                    if (cmd != HELP && cmd != EXIT)
-                    {
-                        printf("%s: ", CONSOLE_RESULT_PROMPT);
-                    }
-                    printf("\n");
+                    printf(CONSOLE_RESULT_PROMPT);
                     executeComando(cmd, params, conjuntos);
-                    printf("\n");
+                    nl();nl();
                     salir = (cmd == EXIT);
                 }
                 else
                 {
-                    printf("Parametros incorrectos");
-                    printf("\n");
+                    printError(ERROR_WRONG_PARAMS);
                 }
             }
             else
             {
-                printf("Comando incorrecto");
-                printf("\n");
+                printError(ERROR_WRONG_COMMAND);
             }
         }
         strdestruir(strcomando);

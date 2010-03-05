@@ -58,15 +58,14 @@ void ConjuntosShow(Conjuntos c){
     }
 }
 
-void ConjuntoIntersection(Conjunto c1, Conjunto c2, Conjunto &inter)
+void ConjuntosAddAndShow(Conjuntos &conjuntos, Conjunto conjunto)
 {
-    if (c1 != NULL)
-    {
-        ConjuntoIntersection(c1->hizq, c2, inter);
-        ConjuntoIntersection(c1->hder, c2, inter);
-        if (ConjuntoPertenece(c2, c1->info))
-        {
-            ConjuntoAddValue(inter, c1->info);
-        }
-    }
+    int newid = ConjuntosGetNextId(conjuntos);
+    ConjuntosAdd(conjuntos, conjunto);
+    printf(MESSAGE_PRE_C, newid);
+    ConjuntoShow(conjunto);
+}
+
+int ConjuntosCount(Conjuntos c){
+    return c.tope;
 }

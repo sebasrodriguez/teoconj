@@ -122,6 +122,19 @@ bool ConjuntoEquals(Conjunto c1, Conjunto c2)
     return equals;
 }
 
+void ConjuntoIntersection(Conjunto c1, Conjunto c2, Conjunto &inter)
+{
+    if (c1 != NULL)
+    {
+        ConjuntoIntersection(c1->hizq, c2, inter);
+        ConjuntoIntersection(c1->hder, c2, inter);
+        if (ConjuntoPertenece(c2, c1->info))
+        {
+            ConjuntoAddValue(inter, c1->info);
+        }
+    }
+}
+
 void ConjuntoSave(string name, Conjunto c){
     ffile file = fopen(name, "wb");
     ConjuntoOrdenSave(file, c);

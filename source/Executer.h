@@ -5,9 +5,7 @@
 #include<stdio.h>
 #include "Params.h"
 #include "Conjuntos.h"
-#include "config.h"
-
-void AddAndShowConjunto(Conjuntos &conjuntos, Conjunto conjunto); //TODO: MOVER A Conjuntos.h
+#include "common.h"
 
 void executeComandoHelp();
 

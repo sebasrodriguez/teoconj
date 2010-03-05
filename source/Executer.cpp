@@ -1,5 +1,4 @@
 #include "Executer.h"
-#include "Conjunto.h"
 #include "lib\utils.h"
 
 void executeComandoHelp()
@@ -40,11 +39,14 @@ void executeComandoHelp()
 }
 void executeComandoListAll(Conjuntos conjuntos)
 {
-    ConjuntosShow(conjuntos);
+    if(ConjuntosCount(conjuntos) > 0)
+        ConjuntosShow(conjuntos);
+    else
+        printf(MESSAGE_EMPTY_LIST);
 }
 void executeComandoExit()
 {
-    printf("Hasta la proxima");
+    printf(MESSAGE_EXIT);
 }
 
 void executeComandoIntersection(Params params, Conjuntos &conjuntos)
@@ -60,21 +62,13 @@ void executeComandoIntersection(Params params, Conjuntos &conjuntos)
 
         ConjuntoIntersection(c1, c2, inter);
 
-        AddAndShowConjunto(conjuntos, inter);
+        ConjuntosAddAndShow(conjuntos, inter);
     }
     else
     {
-        //error
+        printError(ERROR_WRONG_ID);
     }
 
-}
-
-void AddAndShowConjunto(Conjuntos &conjuntos, Conjunto conjunto)
-{
-    int newid = ConjuntosGetNextId(conjuntos);
-    ConjuntosAdd(conjuntos, conjunto);
-    printf("c%d = ", newid);
-    ConjuntoShow(conjunto);
 }
 
 void executeComandoDifference(Params params, Conjuntos &conjuntos)
@@ -92,11 +86,11 @@ void executeComandoDifference(Params params, Conjuntos &conjuntos)
 
         ConjuntoDifference(c1, c2, diff);
 
-        AddAndShowConjunto(conjuntos, diff);
+        ConjuntosAddAndShow(conjuntos, diff);
     }
     else
     {
-        //error
+        printError(ERROR_WRONG_ID);
     }
 }
 void executeComandoIncluded(Params params, Conjuntos conjuntos)
@@ -113,7 +107,7 @@ void executeComandoIncluded(Params params, Conjuntos conjuntos)
 
         if (ConjuntoCount(c2) <= ConjuntoCount(c1))
         {
-            printf("El primer conjunto NO esta incluido estrictamente en el segundo");
+           printf(MESSAGE_FALSE);
         }
         else
         {
@@ -121,17 +115,17 @@ void executeComandoIncluded(Params params, Conjuntos conjuntos)
             ConjuntoIntersection(c1, c2, inter);
             if (ConjuntoEquals(c1, inter))
             {
-                printf("El primer conjunto esta incluido estrictamente en el segundo");
+                printf(MESSAGE_TRUE);
             }
             else
             {
-                printf("El primer conjunto NO esta incluido estrictamente en el segundo");
+                 printf(MESSAGE_FALSE);
             }
         }
     }
     else
     {
-        //error
+        printError(ERROR_WRONG_ID);
     }
 }
 void executeComandoEquals(Params params, Conjuntos conjuntos)
@@ -149,16 +143,16 @@ void executeComandoEquals(Params params, Conjuntos conjuntos)
         bool equals = ConjuntoEquals(c1, c2);
         if (!equals)
         {
-            printf("No son iguales");
+            printf(MESSAGE_FALSE);
         }
         else
         {
-            printf("Son iguales");
+            printf(MESSAGE_TRUE);
         }
     }
     else
     {
-        //error
+        printError(ERROR_WRONG_ID);
     }
 }
 
@@ -177,11 +171,11 @@ void executeComandoUnion(Params params, Conjuntos &conjuntos)
 
         ConjuntoUnion(c1, c2, cUnion);
 
-        AddAndShowConjunto(conjuntos, cUnion);
+        ConjuntosAddAndShow(conjuntos, cUnion);
     }
     else
     {
-        //error
+        printError(ERROR_WRONG_ID);
     }
 }
 
@@ -206,12 +200,12 @@ void executeComandoAdd(Params params, Conjuntos &conjuntos)
                 ConjuntoAddValue(conjunto, valor);
             params = params->sig;
         }
-        printf("c%d = ", id);
+        printf(MESSAGE_PRE_C, id);
         ConjuntoShow(conjunto);
     }
     else
     {
-        //error
+        printError(ERROR_WRONG_ID);
     }
 }
 
@@ -246,12 +240,12 @@ void executeComandoRemove(Params params, Conjuntos &conjuntos)
             params = params->sig;
         }
         UpdateConjuntoRef(conjuntos, conjunto, id);
-        printf("c%d = ", id);
+        printf(MESSAGE_PRE_C, id);
         ConjuntoShow(conjunto);
     }
     else
     {
-        //error
+        printError(ERROR_WRONG_ID);
     }
 }
 void executeComandoMember(Params params, Conjuntos conjuntos)
@@ -266,15 +260,15 @@ void executeComandoMember(Params params, Conjuntos conjuntos)
         {
             valor = parseParamValor(params->info);
             if (ConjuntoPertenece(conjunto, valor))
-                printf(" true");
+                printf(MESSAGE_TRUE);
             else
-                printf(" false");
+                printf(MESSAGE_FALSE);
             params = params->sig;
         }
     }
     else
     {
-        //error
+        printError(ERROR_WRONG_ID);
     }
 }
 void executeComandoCreate(Params params, Conjuntos &conjuntos)
@@ -291,7 +285,7 @@ void executeComandoCreate(Params params, Conjuntos &conjuntos)
         params = params->sig;
     }
     ConjuntosAdd(conjuntos, conjunto);
-    printf("c%d = ", id);
+    printf(MESSAGE_PRE_C, id);
     ConjuntoShow(conjunto);
 }
 void executeComandoShow(Params params, Conjuntos conjuntos)
@@ -305,7 +299,7 @@ void executeComandoShow(Params params, Conjuntos conjuntos)
     }
     else
     {
-        //error
+        printError(ERROR_WRONG_ID);
     }
 }
 
@@ -316,12 +310,16 @@ void executeComandoSave(Params params, Conjuntos conjuntos)
     {
         Conjunto c;
         ConjuntosGetById(conjuntos, id, c);
-        ConjuntoSave(params->sig->info, c);
+        string path;
+        strcop(path, DATA_FILE_PATH);
+        strcon(path, params->sig->info);
+        ConjuntoSave(path, c);
         printf("c%d almacenado correctamente en ", id);
         print(params->sig->info);
     }
     else
     {
+        printError(ERROR_WRONG_ID);
     }
 }
 
@@ -330,7 +328,7 @@ void executeComandoLoad(Params params, Conjuntos &conjuntos)
     Conjunto c;
     ConjuntoCreate(c);
     ConjuntoLoad(params->info, c);
-    AddAndShowConjunto(conjuntos, c);
+    ConjuntosAddAndShow(conjuntos, c);
 }
 
 

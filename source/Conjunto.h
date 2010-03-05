@@ -31,6 +31,8 @@ void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff);
 
 bool ConjuntoEquals(Conjunto c1, Conjunto c2);
 
+void ConjuntoIntersection(Conjunto c1, Conjunto c2, Conjunto &inter);
+
 void ConjuntoCopy(Conjunto &c1, Conjunto c2);
 
 void ConjuntoSave(string name, Conjunto c);
