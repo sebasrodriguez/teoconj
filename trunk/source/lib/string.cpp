@@ -43,13 +43,20 @@ void scan(string &s){
 }
 
 void strcon(string &s, string t){
-    int i = strlar(s), j = 0;
+    string aux = new char[strlar(s) + strlar(t) + 1];
+    int i = 0;
+    while (i < CHAR_MAX - 1 && s[i] != EOS){
+        aux[i] = s[i];
+        i++;
+    }
+    int j = 0;
     while (i < CHAR_MAX - 1 && t[j] != EOS){
-        s[i] = t[j];
+        aux[i] = t[j];
         i++;
         j++;
     }
-    s[i] = EOS;
+    aux[i] = EOS;
+    strcop(s, aux);
 }
 
 void strswp(string &s, string &t){
@@ -127,14 +134,5 @@ void strclear(string &s){
 void strcrearmax(string &s){
     s = new char[CHAR_MAX];
     s[0] = EOS;
-}
-
-void strcast(string &s, string t){
-    s = new char[strlar(t) + 1];
-    int i = 0;
-    while (t[i] != EOS){
-        straddchar(s, t[i]);
-        i++;
-    }
 }
 

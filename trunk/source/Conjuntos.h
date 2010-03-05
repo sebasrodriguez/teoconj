@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "lib/listaABB.h"
 #include "Conjunto.h"
+#include "common.h"
 
 typedef struct{
     ListaABB conjuntos;
@@ -24,6 +25,8 @@ int ConjuntosGetNextId(Conjuntos c);
 
 void ConjuntosShow(Conjuntos c);
 
-void ConjuntoIntersection(Conjunto c1, Conjunto c2, Conjunto &inter);
+void ConjuntosAddAndShow(Conjuntos &conjuntos, Conjunto conjunto);
+
+int ConjuntosCount(Conjuntos c);
 
 #endif
