@@ -14,14 +14,20 @@ bool ConjuntosHasId(Conjuntos c, int id){
     return id <= c.tope;
 }
 
-void ConjuntosAddValueToConj(Conjuntos &c, int id, int valor, Conjunto &conjunto){
+void ConjuntosAddValueToConj(Conjuntos &c, int id, Params params, Conjunto &conjunto){
     ListaABB aux;
     aux = c.conjuntos;
     bool found = false;
-    int i = 1;
+    int valor,  i = 1;
     while(!found){
         if(i == id){
-            ConjuntoAddValue(aux->info, valor);
+            while (params != NULL)
+            {
+                valor = parseParamValor(params->info);
+                if (!ConjuntoPertenece(aux->info, valor))
+                    ConjuntoAddValue(aux->info, valor);
+                params = params->sig;
+            }
             conjunto = aux->info;
             found = true;
         }
@@ -68,4 +74,26 @@ void ConjuntosAddAndShow(Conjuntos &conjuntos, Conjunto conjunto)
 
 int ConjuntosCount(Conjuntos c){
     return c.tope;
+}
+
+void ConjuntosRemoveValueFromConj(Conjuntos &c, int id, Params params, Conjunto &conjunto){
+    ListaABB aux;
+    aux = c.conjuntos;
+    bool found = false;
+    int valor,  i = 1;
+    while(!found){
+        if(i == id){
+            while (params != NULL)
+            {
+                valor = parseParamValor(params->info);
+                if (ConjuntoPertenece(aux->info, valor))
+                    ConjuntoRemoveValue(aux->info, valor);
+                params = params->sig;
+            }
+            conjunto = aux->info;
+            found = true;
+        }
+        aux = aux->sig;
+        i ++;
+    }
 }
