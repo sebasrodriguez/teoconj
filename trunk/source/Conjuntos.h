@@ -30,6 +30,6 @@ void ConjuntosAddAndShow(Conjuntos &conjuntos, Conjunto conjunto);
 
 int ConjuntosCount(Conjuntos c);
 
-void ConjuntosRemoveValueFromConj(Conjuntos &c, int id, Params params, Conjunto &c);
+void ConjuntosRemoveValueFromConj(Conjuntos &c, int id, Params params, Conjunto &conjunto);
 
 #endif
