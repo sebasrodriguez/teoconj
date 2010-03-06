@@ -92,6 +92,9 @@ void executeComandoDifference(Params params, Conjuntos &conjuntos)
         printError(ERROR_WRONG_ID);
     }
 }
+
+
+
 void executeComandoIncluded(Params params, Conjuntos conjuntos)
 {
     int id1 = parseParamConjunto(params->info);
@@ -103,24 +106,7 @@ void executeComandoIncluded(Params params, Conjuntos conjuntos)
 
         ConjuntosGetById(conjuntos, id1, c1);
         ConjuntosGetById(conjuntos, id2, c2);
-
-        if (ConjuntoCount(c2) <= ConjuntoCount(c1))
-        {
-           printf(MESSAGE_FALSE);
-        }
-        else
-        {
-            Conjunto inter;
-            ConjuntoIntersection(c1, c2, inter);
-            if (ConjuntoEquals(c1, inter))
-            {
-                printf(MESSAGE_TRUE);
-            }
-            else
-            {
-                 printf(MESSAGE_FALSE);
-            }
-        }
+        printBool(ConjuntoIncluded(c1, c2));
     }
     else
     {
@@ -222,10 +208,7 @@ void executeComandoMember(Params params, Conjuntos conjuntos)
         while (params != NULL)
         {
             valor = parseParamValor(params->info);
-            if (ConjuntoPertenece(conjunto, valor))
-                printf(MESSAGE_TRUE);
-            else
-                printf(MESSAGE_FALSE);
+            printBool(ConjuntoMember(conjunto, valor));
             params = params->sig;
         }
     }
