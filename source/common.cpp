@@ -6,6 +6,13 @@ void printError(string s){
     nl();nl();
 }
 
+void printBool(bool b){
+    if(b)
+        printf(MESSAGE_TRUE);
+    else
+        printf(MESSAGE_FALSE);
+}
+
 void getFilePath(string name, string &s){
     string path;
     strcop(path, DATA_FILE_PATH);

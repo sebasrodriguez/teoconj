@@ -30,6 +30,8 @@ const string Q_REPLASE = "Ya existe un archivo con ese nombre, ¿desea reemplazar
 
 void printError(string s);
 
+void printBool(bool b);
+
 void getFilePath(string name, string &s);
 
 bool confirm(string question);

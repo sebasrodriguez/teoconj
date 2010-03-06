@@ -60,23 +60,23 @@ void ConjuntoCopy(Conjunto &c1, Conjunto c2)
     ArbolIntCopy(c1, c2);
 }
 
-void ConjuntoUnion(Conjunto c1, Conjunto &c2)
+void ConjuntoOrdenUnion(Conjunto c1, Conjunto &c2)
 {
     if (c1 != NULL)
     {
-        ConjuntoUnion(c1->hizq, c2);
+        ConjuntoOrdenUnion(c1->hizq, c2);
         if (!ConjuntoPertenece(c2, c1->info))
         {
             ConjuntoAddValue(c2, c1->info);
         }
-        ConjuntoUnion(c1->hder, c2);
+        ConjuntoOrdenUnion(c1->hder, c2);
     }
 }
 
-void ConjuntoUnion(Conjunto c1, Conjunto c2, Conjunto &cUnion)
+void ConjuntoUnion(Conjunto c1, Conjunto c2, Conjunto &uni)
 {
-    ConjuntoCopy(cUnion, c1);
-    ConjuntoUnion(c2, cUnion);
+    ConjuntoCopy(uni, c1);
+    ConjuntoOrdenUnion(c2, uni);
 }
 
 void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff)
@@ -92,34 +92,46 @@ void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff)
     }
 }
 
-void RecursiveEquals(Conjunto c1, Conjunto c2, bool &equals)
+void ConjuntoPostOrdenEquals(Conjunto c1, Conjunto c2, bool &equals)
 {
     if (c1 != NULL && equals)
     {
         equals = ConjuntoPertenece(c2, c1->info);
         if (equals)
         {
-            RecursiveEquals(c1->hizq, c2, equals);
+            ConjuntoPostOrdenEquals(c1->hizq, c2, equals);
             if (equals)
             {
-                RecursiveEquals(c1->hder, c2, equals);
+                ConjuntoPostOrdenEquals(c1->hder, c2, equals);
             }
         }
     }
 }
 
+bool ConjuntoMember(Conjunto c, int valor){
+    return ConjuntoPertenece(c, valor);
+}
+
 bool ConjuntoEquals(Conjunto c1, Conjunto c2)
 {
-    bool equals;
-    if (ConjuntoCount(c1) != ConjuntoCount(c2))
-    {
-        equals = false;
-    }
-    else
-    {
-        RecursiveEquals(c1, c2, equals);
+    bool equals = ConjuntoCount(c1) == ConjuntoCount(c2);
+    if(equals){
+        ConjuntoPostOrdenEquals(c1, c2, equals);
     }
     return equals;
+}
+
+bool ConjuntoIncluded(Conjunto c1, Conjunto c2){
+    bool r = false;
+    if (ConjuntoCount(c1) < ConjuntoCount(c2)){
+        Conjunto inter; ConjuntoCreate(inter);
+        ConjuntoIntersection(c1, c2, inter);
+        if (ConjuntoEquals(c1, inter))
+        {
+            r = true;
+        }
+    }
+    return r;
 }
 
 void ConjuntoIntersection(Conjunto c1, Conjunto c2, Conjunto &inter)
@@ -135,11 +147,6 @@ void ConjuntoIntersection(Conjunto c1, Conjunto c2, Conjunto &inter)
     }
 }
 
-void ConjuntoSave(string name, Conjunto c){
-    ffile file = fopen(name, "wb");
-    ConjuntoOrdenSave(file, c);
-    fclose(file);
-}
 void ConjuntoOrdenSave(ffile &file, Conjunto c){
     if (c != NULL)
     {
@@ -147,6 +154,12 @@ void ConjuntoOrdenSave(ffile &file, Conjunto c){
         fbajarInt(c->info, file);
         ConjuntoOrdenSave(file, c->hder);
     }
+}
+
+void ConjuntoSave(string name, Conjunto c){
+    ffile file = fopen(name, "wb");
+    ConjuntoOrdenSave(file, c);
+    fclose(file);
 }
 
 void ConjuntoLoad(string name, Conjunto &c){

@@ -58,7 +58,7 @@ int ConjuntosGetNextId(Conjuntos c){
 void ConjuntosShow(Conjuntos c){
     int i = 1;
     while (c.conjuntos != NULL) {
-        printf("c%d = ", i); ConjuntoShow(c.conjuntos->info); printf("\n");
+        printf(MESSAGE_PRE_C, i); ConjuntoShow(c.conjuntos->info);
         c.conjuntos = c.conjuntos->sig;
         i++;
     }

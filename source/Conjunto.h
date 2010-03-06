@@ -23,24 +23,22 @@ int ConjuntoCount(Conjunto c);
 
 void ConjuntoRemoveValue(Conjunto &c, int valor);
 
-void ConjuntoUnion(Conjunto c1, Conjunto &c2);
-
-void ConjuntoUnion(Conjunto c1, Conjunto c2, Conjunto &c3);
+void ConjuntoUnion(Conjunto c1, Conjunto c2, Conjunto &uni);
 
 void ConjuntoDifference(Conjunto c1, Conjunto c2, Conjunto &diff);
+
+bool ConjuntoMember(Conjunto c, int valor);
 
 bool ConjuntoEquals(Conjunto c1, Conjunto c2);
 
 void ConjuntoIntersection(Conjunto c1, Conjunto c2, Conjunto &inter);
 
+bool ConjuntoIncluded(Conjunto c1, Conjunto c2);
+
 void ConjuntoCopy(Conjunto &c1, Conjunto c2);
 
 void ConjuntoSave(string name, Conjunto c);
 
-void ConjuntoOrdenSave(ffile &file, Conjunto c);
-
 void ConjuntoLoad(string name, Conjunto &c);
-
-void ConjuntoOrdenLoad(ffile &file, Conjunto &c);
 
 #endif
