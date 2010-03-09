@@ -6,7 +6,7 @@
 #include "lib/utils.h"
 
 
-const string CONSOLE_PROMPT = "TC>: ";
+const string CONSOLE_PROMPT = "TC>";
 const string CONSOLE_RESULT_PROMPT = "";
 const string CONSOLE_ERROR_PROMPT = "!ERROR: ";
 
@@ -25,7 +25,7 @@ const string MESSAGE_FALSE = "false";
 const string MESSAGE_PRE_C = "c%d = ";
 const string MESSAGE_SAVED = "c%d almacenado correctamente en %s";
 
-const string Q_REPLASE = "Ya existe un archivo con ese nombre, ¿desea reemplazarlo?";
+const string Q_REPLACE = "Ya existe un archivo con ese nombre, ¿desea reemplazarlo?";
 
 void printError(string s);
 

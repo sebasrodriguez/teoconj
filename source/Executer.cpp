@@ -29,16 +29,16 @@ void executeComandoHelp()
     nl();
     printf("* listall: listall");
     nl();
-    printf("* save: save cN nombreArchivo.txt");
+    printf("* save: save cN nombreArchivo");
     nl();
-    printf("* load: load nombreArchivo.txt");
+    printf("* load: load nombreArchivo");
     nl();
     printf("* exit: exit");
     nl();
 }
 void executeComandoListAll(Conjuntos conjuntos)
 {
-    if(ConjuntosCount(conjuntos) > 0)
+    if (ConjuntosCount(conjuntos) > 0)
         ConjuntosShow(conjuntos);
     else
         printf(MESSAGE_EMPTY_LIST);
@@ -258,7 +258,8 @@ void executeComandoSave(Params params, Conjuntos conjuntos)
         string path;
         getFilePath(params->sig->info, path);
         bool exists = fexists(path);
-        if(!exists || (exists && confirm(Q_REPLASE))){
+        if (!exists || (exists && confirm(Q_REPLACE)))
+        {
             Conjunto c;
             ConjuntosGetById(conjuntos, id, c);
             ConjuntoSave(path, c);
@@ -276,12 +277,15 @@ void executeComandoLoad(Params params, Conjuntos &conjuntos)
 {
     string path;
     getFilePath(params->info, path);
-    if(fexists(path)){
+    if (fexists(path))
+    {
         Conjunto c;
         ConjuntoCreate(c);
         ConjuntoLoad(path, c);
         ConjuntosAddAndShow(conjuntos, c);
-    }else{
+    }
+    else
+    {
         printError(ERROR_WRONG_FILENAME);
     }
 }
