@@ -3,7 +3,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "lib/string.h"
 #include "lib/arbolint.h"
 #include "lib/file.h"
 
