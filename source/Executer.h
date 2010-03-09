@@ -3,10 +3,7 @@
 
 #include<stdlib.h>
 #include<stdio.h>
-#include "Params.h"
 #include "Conjuntos.h"
-#include "common.h"
-#include "lib\utils.h"
 
 void executeComandoHelp();
 

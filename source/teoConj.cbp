@@ -42,8 +42,8 @@
 		<Unit filename="Executer.h" />
 		<Unit filename="Params.cpp" />
 		<Unit filename="Params.h" />
-		<Unit filename="config.cpp" />
-		<Unit filename="config.h" />
+		<Unit filename="common.cpp" />
+		<Unit filename="common.h" />
 		<Unit filename="lib\arbolint.cpp" />
 		<Unit filename="lib\arbolint.h" />
 		<Unit filename="lib\file.cpp" />

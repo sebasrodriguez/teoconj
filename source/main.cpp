@@ -1,8 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "lib/string.h"
-#include "lib\utils.h"
 #include "Executer.h"
 
 void showBanner()

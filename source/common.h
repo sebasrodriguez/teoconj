@@ -3,7 +3,6 @@
 //config de la aplicacion
 //aca van los parametros globales a toda a aplicacion
 #include <stdio.h>
-#include "lib/string.h"
 #include "lib/utils.h"
 
 

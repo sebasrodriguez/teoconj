@@ -3,7 +3,6 @@
 
 #include<stdlib.h>
 #include<stdio.h>
-#include "lib/listastring.h"
 #include "Comando.h"
 
 typedef ListaString Params;
