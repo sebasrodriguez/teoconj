@@ -57,13 +57,17 @@
 		<Unit filename="lib\utils.cpp" />
 		<Unit filename="lib\utils.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="test\test_comando.cpp" />
-		<Unit filename="test\test_conjunto.cpp">
-			<Option target="Release" />
+		<Unit filename="test\test_comando.cpp">
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="test\test_conjuntos.cpp" />
+		<Unit filename="test\test_conjunto.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="test\test_conjuntos.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="test\test_string.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>
 			<code_completion />
