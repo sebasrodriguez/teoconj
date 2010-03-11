@@ -20,7 +20,8 @@ typedef enum {
     REMOVE,
     SAVE,
     SHOW,
-    UNION
+    UNION,
+    CLEAR
 }Comando;
 
 void getComandoList(ListaString &l);

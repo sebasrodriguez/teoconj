@@ -16,6 +16,7 @@ void getComandoList(ListaString &l){
     ListaStringInsBack(l, "save");
     ListaStringInsBack(l, "show");
     ListaStringInsBack(l, "union");
+    ListaStringInsBack(l, "clear");
 }
 
 bool validateComando(string cmd){
@@ -47,6 +48,7 @@ Comando getComandoFromString(string s){
     else if(equalComandoString(SAVE, s)) cmd = SAVE;
     else if(equalComandoString(SHOW, s)) cmd = SHOW;
     else if(equalComandoString(UNION, s)) cmd = UNION;
+    else if(equalComandoString(CLEAR, s)) cmd = CLEAR;
     return cmd;
 }
 
@@ -73,6 +75,7 @@ void getComandoString(Comando cmd, string &s){
         case SAVE: strcop(s, "save"); break;
         case SHOW: strcop(s, "show"); break;
         case UNION: strcop(s, "union"); break;
+        case CLEAR: strcop(s, "clear"); break;
         default: strcop(s, "");
     }
 }

@@ -35,6 +35,8 @@ void executeComandoSave(Params params, Conjuntos conjuntos);
 
 void executeComandoLoad(Params params, Conjuntos &conjuntos);
 
-void executeComando(Comando cmd, ListaString params, Conjuntos &conjuntos);
+void executeComandoClear();
+
+void executeComando(Comando cmd, Params params, Conjuntos &conjuntos);
 
 #endif
