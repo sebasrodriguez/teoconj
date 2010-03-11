@@ -289,6 +289,9 @@ void executeComandoLoad(Params params, Conjuntos &conjuntos)
         printError(ERROR_WRONG_FILENAME);
     }
 }
+void executeComandoClear(){
+    system("cls");
+}
 
 void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
 {
@@ -338,6 +341,9 @@ void executeComando(Comando cmd, Params params, Conjuntos &conjuntos)
         break;
     case LOAD:
         executeComandoLoad(params, conjuntos);
+        break;
+    case CLEAR:
+        executeComandoClear();
         break;
     }
 }

@@ -14,6 +14,7 @@ bool ParamsValidate(Comando cmd, Params params){
         case HELP:
         case LISTALL:
         case EXIT:
+        case CLEAR:
             valid = ListaStringEmpty(params);
             break;
         case UNION:
