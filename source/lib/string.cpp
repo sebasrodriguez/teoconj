@@ -1,38 +1,45 @@
 #include "string.h"
 
-void strcrear(string &s){
+void strcrear(string &s)
+{
     s = new char[1];
     s[0] = EOS;
 }
 
-void strdestruir(string &s){
+void strdestruir(string &s)
+{
     delete [] s;
     s = NULL;
 }
 
-int strlar(string s){
+int strlar(string s)
+{
     int i = 0;
     while (s[i] != EOS)
         i++;
     return i;
 }
 
-void strcop(string &s, string t){
+void strcop(string &s, string t)
+{
     s = new char[strlar(t) + 1];
     int i = 0;
-    while (t[i] != EOS){
+    while (t[i] != EOS)
+    {
         s[i] = t[i];
         i++;
     }
     s[i] = EOS;
 }
 
-void scan(string &s){
+void scan(string &s)
+{
     char l, * a = new char[CHAR_MAX];
     int i = 0;
     fflush(stdin);
     scanf("%c", &l);
-    while (l != EOL && i < CHAR_MAX - 1){
+    while (l != EOL && i < CHAR_MAX - 1)
+    {
         a[i] = l;
         i++;
         scanf("%c", &l);
@@ -42,15 +49,18 @@ void scan(string &s){
     strdestruir(a);
 }
 
-void strcon(string &s, string t){
+void strcon(string &s, string t)
+{
     string aux = new char[strlar(s) + strlar(t) + 1];
     int i = 0;
-    while (i < CHAR_MAX - 1 && s[i] != EOS){
+    while (i < CHAR_MAX - 1 && s[i] != EOS)
+    {
         aux[i] = s[i];
         i++;
     }
     int j = 0;
-    while (i < CHAR_MAX - 1 && t[j] != EOS){
+    while (i < CHAR_MAX - 1 && t[j] != EOS)
+    {
         aux[i] = t[j];
         i++;
         j++;
@@ -59,7 +69,8 @@ void strcon(string &s, string t){
     strcop(s, aux);
 }
 
-void strswp(string &s, string &t){
+void strswp(string &s, string &t)
+{
     string aux;
     strcrear(aux);
     strcop(aux, s);
@@ -67,24 +78,29 @@ void strswp(string &s, string &t){
     strcop(t, aux);
 }
 
-void print(string s){
+void print(string s)
+{
     int i = 0;
-    while (s[i] != EOS){
+    while (s[i] != EOS)
+    {
         printf("%c", s[i]);
         i++;
     }
 }
 
-void strtolower(string &s){
+void strtolower(string &s)
+{
     int i = 0;
-    while (s[i] != EOS){
+    while (s[i] != EOS)
+    {
         if ('A' <= s[i] && s[i] <= 'Z')
             s[i] += 32;
         i ++;
     }
 }
 
-bool strmen(string s, string t){
+bool strmen(string s, string t)
+{
     string aux1;
     string aux2;
     strcrear(aux1);
@@ -99,7 +115,8 @@ bool strmen(string s, string t){
     return (aux1[i] <= aux2[i]);
 }
 
-bool streq(string s, string t){
+bool streq(string s, string t)
+{
     string aux1;
     string aux2;
     strcrear(aux1);
@@ -114,10 +131,12 @@ bool streq(string s, string t){
     return (aux1[i] == aux2[i]);
 }
 
-void straddchar(string &s, char c){
+void straddchar(string &s, char c)
+{
     string t = new char[strlar(s) + 2];
     int i = 0;
-    while (s[i] != EOS){
+    while (s[i] != EOS)
+    {
         t[i] = s[i];
         i++;
     }
@@ -127,11 +146,13 @@ void straddchar(string &s, char c){
     strcop(s, t);
 }
 
-void strclear(string &s){
+void strclear(string &s)
+{
     strcop(s, "");
 }
 
-void strcrearmax(string &s){
+void strcrearmax(string &s)
+{
     s = new char[CHAR_MAX];
     s[0] = EOS;
 }
