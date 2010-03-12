@@ -33,6 +33,8 @@ void executeComandoHelp()
     nl();
     printf("* load: load nombreArchivo");
     nl();
+    printf("* clear: clear");
+    nl();
     printf("* exit: exit");
     nl();
 }

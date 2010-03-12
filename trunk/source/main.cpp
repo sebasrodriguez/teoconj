@@ -43,7 +43,8 @@ int main()
                 {
                     printf(CONSOLE_RESULT_PROMPT);
                     executeComando(cmd, params, conjuntos);
-                    nl();nl();
+                    nl();
+                    nl();
                     salir = (cmd == EXIT);
                 }
                 else
