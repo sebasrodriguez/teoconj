@@ -1,0 +1,21 @@
+create 10 5 7 3 12 15 19
+create 20 15 13 19 23 21 30
+intersection c1 c2
+union c3 c2
+remove c3 15 19
+add c3 5 6 7 8
+listall
+create 5 6 7 8 9
+equals c3 c5
+remove c5 9
+equals c3 c5
+member c1 19
+difference c2 c1
+save c6 conjunto
+save c5 conjunto
+y
+load conjunto
+add c7 9
+included c5 c7
+show c2
+listall
