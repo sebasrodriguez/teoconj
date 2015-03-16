@@ -1,0 +1,1 @@
+Aplicación desarrollada en C con utilidades basicas para el manejo de conjuntos finitos, basada en la Teoría de Conjuntos Finitos
